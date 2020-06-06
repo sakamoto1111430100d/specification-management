@@ -1,24 +1,49 @@
-# README
+# specification-management DB設計
+## usersテーブル
+|Column|Type|Option|
+|------|----|------|
+|name|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false|
+### Association
+- has_many :companies
+- has_many :items
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## companiesテーブル
+|Column|Type|Option|
+|------|----|------|
+|name|string|null: false|
+|office|string|
+### Association
+- has_many :items, through: :spetifications
+- has_many :spetifications
 
-Things you may want to cover:
+## itemsテーブル
+|Column|Type|Option|
+|------|----|------|
+|name|string|null: false|
+|number|integer|null: false|
+### Association
+- has_many :companies, through: :spetifications
+- has_many :spetifications
 
-* Ruby version
+## spetificationsテーブル
+|Column|Type|Option|
+|------|----|------|
+|date|string|null: false|
+|image|string|
+|company_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :company
+- belongs_to :item
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<!-- ## companies_itemsテーブル
+|Column|Type|Option|
+|------|----|------|
+|company_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :company
+- belongs_to :item -->
