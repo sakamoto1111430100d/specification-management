@@ -2,7 +2,6 @@
 ## usersテーブル
 |Column|Type|Option|
 |------|----|------|
-|name|string|null: false|
 |email|string|null: false, unique: true|
 |password|string|null: false|
 ### Association
@@ -22,7 +21,7 @@
 |Column|Type|Option|
 |------|----|------|
 |name|string|null: false|
-|number|integer|null: false|
+|code|integer|null: false|
 ### Association
 - has_many :companies, through: :spetifications
 - has_many :spetifications
