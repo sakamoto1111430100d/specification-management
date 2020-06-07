@@ -1,2 +1,0 @@
-class Spetification < ApplicationRecord
-end

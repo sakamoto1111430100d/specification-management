@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200606161145) do
+ActiveRecord::Schema.define(version: 20200607014926) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -19,22 +19,23 @@ ActiveRecord::Schema.define(version: 20200606161145) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       null: false
-    t.integer  "code",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "spetifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "date",       null: false
+  create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "date",       null: false
+    t.string   "author",     null: false
     t.string   "image"
     t.integer  "company_id"
     t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_spetifications_on_company_id", using: :btree
-    t.index ["item_id"], name: "index_spetifications_on_item_id", using: :btree
+    t.index ["company_id"], name: "index_documents_on_company_id", using: :btree
+    t.index ["item_id"], name: "index_documents_on_item_id", using: :btree
+  end
+
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.integer  "code",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -49,6 +50,6 @@ ActiveRecord::Schema.define(version: 20200606161145) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "spetifications", "companies"
-  add_foreign_key "spetifications", "items"
+  add_foreign_key "documents", "companies"
+  add_foreign_key "documents", "items"
 end
