@@ -1,4 +1,4 @@
-# specification-management DB設計
+# documents-management DB設計
 ## usersテーブル
 |Column|Type|Option|
 |------|----|------|
@@ -14,8 +14,8 @@
 |name|string|null: false|
 |office|string|
 ### Association
-- has_many :items, through: :spetifications
-- has_many :spetifications
+- has_many :items, through: :documents
+- has_many :documents
 
 ## itemsテーブル
 |Column|Type|Option|
@@ -23,13 +23,14 @@
 |name|string|null: false|
 |code|integer|null: false|
 ### Association
-- has_many :companies, through: :spetifications
-- has_many :spetifications
+- has_many :companies, through: :documents
+- has_many :documents
 
-## spetificationsテーブル
+## documentsテーブル
 |Column|Type|Option|
 |------|----|------|
-|date|string|null: false|
+|date|integer|null: false|
+|author|string|null: false|
 |image|string|
 |company_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
