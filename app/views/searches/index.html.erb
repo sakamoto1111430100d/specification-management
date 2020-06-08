@@ -1,7 +1,9 @@
 <div class="wapper">
   <header>
-    <div class="name">name</div>
-    <a href="#" class="fas fa-plus"></a>
+    <div class="name">
+      <%= link_to "仕様書管理", destroy_user_session_path, method: :delete, class: 'btn'%>
+    </div>
+    <a href="/searches/new" class="fas fa-plus"></a>
   </header>
   <main>
     <form class="search" action="" method="get">
