@@ -1,0 +1,42 @@
+<div class="form">
+  <%= form_for @company, url: searches_path do |f| %>
+    <div>
+    社名<br>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+    事業所<br>
+      <%= f.text_field :office %>
+    </div>
+
+    <%= fields_for @item do |c| %>
+      <div>
+      <br>製品名<br>
+        <%= c.text_field :name %>
+      </div>
+      <div>
+      コード番号<br>
+        <%= c.text_field :code %>
+      </div>
+
+      <%= fields_for @document do |d| %>
+        <div>
+        <br>締結日（例 20200101）<br>
+          <%= d.text_field :date %>
+        </div>
+        <div>
+        投稿者<br>
+          <%= d.text_field :author %>
+        </div>
+        <div>
+        仕様書<br>
+          <%= d.text_field :image %>
+        </div>
+      <div>
+      <br>
+        <%= f.submit "  登録  "%>
+      </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
