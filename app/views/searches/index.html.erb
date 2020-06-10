@@ -1,19 +1,42 @@
 <div class="wapper">
   <header>
     <div class="name">
-      <%= link_to "仕様書管理", destroy_user_session_path, method: :delete, class: 'btn'%>
+      <%= link_to "文書管理", destroy_user_session_path, method: :delete, class: 'btn'%>
     </div>
-    <a href="/searches/new" class="fas fa-plus"></a>
+    <div class="add">
+      <%= link_to "", new_user_search_path(current_user), method: :get, class: 'fas fa-plus'%>
+    </div>   
   </header>
   <main>
-    <form class="search" action="" method="get">
-      <input class="search__input" type="text" name="name">
-      <input type="submit" value="search">
-    </form>
+    <%= form_tag search_user_searches_path(current_user), :method => 'get' do %>
+      <%= text_field_tag :keyword %>
+      <%= submit_tag 'Search', class: 'search_btn' %>
+    <% end %>
+    <div class="result">
+      <div class="result__company">
+        <%= render partial: "search" %>
+      </div>
+    </div>
     <div class="index">
-      <div class="document">
-        <div class="company">社名</div>
-        <div clas="item">コード・品名</div>
+      <div class="index__list">
+        <div class="company-list">
+          <% @companyLists.each do |company| %><br>
+          <div class="company-list__element">
+            <%= link_to "#{company.id}", user_companies_path(company_id: company.id, user_id: current_user.id, ), class: 'link' %>
+            <%= "#{company.name}"  %>
+            <%= "#{company.office}" %>
+          </div>
+          <% end %>
+        </div>
+        <div class="item-list">
+          <% @itemLists.each do |item| %><br>
+          <div class="item-list__element">
+            <%= link_to "#{item.id}", user_items_path(items_id: item.id, user_id: current_user.id), method: :get, class: 'link' %>
+            <%= "#{item.code}" %>
+            <%= "#{item.name}" %>
+          </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </main>
