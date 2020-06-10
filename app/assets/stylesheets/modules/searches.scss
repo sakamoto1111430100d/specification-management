@@ -1,5 +1,4 @@
 .wapper {
-  height: 100vh;
   position: relative;
   header {
     height: 45px;
@@ -9,8 +8,10 @@
     margin-bottom: 100px;
     padding-left: 30px;
     border: solid 1px;
+    
     .mame {
     }
+    .add {}
     a {
       display: block;
       text-decoration: none;
@@ -20,31 +21,75 @@
   }
   main {
     margin: 0 30px;
-    .search {
+    form {
+      text-align: center;
+      #keyword {
+        height: 50px;
+        width: 400px;
+        margin-bottom: 50px;
+        text-align: center;
+        line-height: 100px;
+      }
+      .search_btn {
+        height: 50px;
+        width: 100px;
+      }
+    }
+    #keyword {
       height: 100px;
-      margin: 0 auto;
       margin-bottom: 50px;
       text-align: center;
       line-height: 100px;
-      &__input {
-        height: 50px;
-        width: 400px;
-      }
+    }
+    .search_btn {
+      height: 50px;
+      width: 400px;
+    }
+    
+    .result {
+      &__company {}
     }
     .index {
       height: calc(100vh - 310px);
       width: 100vw;
-      .document {
+      &__list {
         display: flex;
-        .company {}
-        .item {}
+        margin-bottom: 80px;
+        justify-content: center;
+        .company-list {
+          width: 300px;
+          #company-id {}
+        }
+        .item-list {
+          width: 100px;
+        }
+        .link {
+          text-decoration: none;
+        }
       }
+
+
+
+      // &__content {
+      //   margin-bottom: 100px;
+      //   .company {
+      //     width: 300px;
+      //   }
+      //   .item {
+      //     width: 100px;
+      //   }
+      //   .link {
+      //     text-decoration: none;
+      //   }
+      // }
+
+
     }
   }
   footer {
     height: 45px;
     width: 100vw;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     border: solid 1px;
   }
