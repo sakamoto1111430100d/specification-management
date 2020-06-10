@@ -38,12 +38,20 @@
 - belongs_to :company
 - belongs_to :item
 
-
-<!-- ## companies_itemsテーブル
+## company-usersテーブル
 |Column|Type|Option|
 |------|----|------|
+|user_id|integer|null: false, foreign_key: true|
 |company_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :company
+
+## item-usersテーブル
+|Column|Type|Option|
+|------|----|------|
+|user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :company
-- belongs_to :item -->
+- belongs_to :user
+- belongs_to :item
