@@ -1,7 +1,10 @@
 class SearchesController < ApplicationController
 
-
   def index
+    @companies = []
+    @companyLists = Company.all
+    @itemLists = Item.all
+    @documents
   end
 
   def new
@@ -36,10 +39,12 @@ class SearchesController < ApplicationController
     document = Document.new(document_params)
     document.save
 
-    redirect_to searches_path
+    redirect_to user_searches_path
   end
 
-
+  def search
+    @companies = Company.search(params[:keyword])
+  end
 
   private
 
