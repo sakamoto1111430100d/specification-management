@@ -1,0 +1,30 @@
+<div class="item-wapper">
+  <div class="item-header">
+    <div class="item-header__name"><%= "#{@item.code}  #{@item.name}" %></div>
+  </div>
+  <div class="item-main">
+    <div class="item-main__index">
+      <div>
+      　　投稿日　　　投稿者　　　image
+      </div>
+      <div class="item-content">
+        <% @documents.each do |document| %>
+          <div class="item-content--document">
+            <div class="item-content--document--date">
+              <%= link_to "#{document.date}", user_searches_path(current_user) %>
+            </div>
+            <div class="item-content--document--author">
+              <%= link_to "#{document.author}", user_searches_path(current_user) %>
+            </div>
+            <div class="item-content--document--image">
+              <%= link_to "#{document.image}", user_searches_path(current_user) %>
+            </div>
+          </div>
+        <% end %>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="item-footer"></div>
+</div>
