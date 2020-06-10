@@ -1,0 +1,50 @@
+.item-wapper {
+  height: 100vh;
+  position: relative;
+  .item-header {
+    height: 45px;
+    border: solid 1px;
+    display: flex;
+    justify-content: center;
+    &__name {
+      line-height: 45px;
+      font-size: 30px;
+    }
+  }
+  .item-main {
+    height: calc(100vh - 90);
+    padding: 15px 30px 15px 30px;
+    &__index {
+      .item-content {
+        align-items: center;
+        height: 80px;
+        &--document {
+          padding-bottom: 15px;
+          margin-bottom: 20px;
+          border-bottom: solid 1px;
+          display: flex;
+
+          &--date {
+            margin: 0 15px;
+          }
+          &--author {
+            margin: 0 15px;
+          }
+          &--image {
+            margin: 0 15px;
+          }
+        }
+        &--item {
+          width: 150px;
+        }
+      }
+    }
+  }
+  .item-footer {
+    height: 45px;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    border: solid 1px;
+  }
+}
