@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :companies
-  has_many :items
+  has_many :company_users
+  has_many :companies, through: :company_users
+  has_many :item_users
+  has_many :items, through: :item_users
+  has_many :documents
+
 end
