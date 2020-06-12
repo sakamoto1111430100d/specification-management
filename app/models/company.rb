@@ -4,9 +4,9 @@ class Company < ApplicationRecord
   has_many :company_users
   has_many :users, through: :company_users
 
-  
   def self.search(keyword)
     return Company.all unless search
-    Company.where('name LIKE(?)', "%#{keyword}%")
+    Company.where("name LIKE ?", "%#{keyword}%")
   end
+  
 end
