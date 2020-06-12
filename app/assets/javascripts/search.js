@@ -5,10 +5,10 @@ $(function() {
       `
       <div class="company-list">
           <div class="company-list__element">
-            ${company.name}
-            ${company.office}
-            ${ccompany.user.id}
-
+          <a href="/users/${company.user_id}/companies?company_id=${company.id}">
+          ${company.name}
+          ${company.id}
+          ${company.user_id}
           </div>
       </div>
       `
@@ -59,7 +59,3 @@ $(function() {
     });
   });
 });
-
-
-// <%= link_to ${company.id}, user_companies_path(company_id: ${company.id}, user_id: ${current_user.id}, ), class: 'link' %>
-//<a href="/users/:user_id/companies" id="idLnk">なにかのリンク</a>
