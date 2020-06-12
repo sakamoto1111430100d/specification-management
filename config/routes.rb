@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'searches#index'
   resources :users, only: [:edit, :update] do
     resources :companies, only: :index
+    resource :companies, only: [:edit, :update]
     resources :items, only: :index
     resources :searches, only: [:index, :new, :create] do
       collection do
