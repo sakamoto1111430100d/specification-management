@@ -1,5 +1,7 @@
 .wapper {
   position: relative;
+  // background-image : url(https://source.unsplash.com/bIhpiQA009k );
+  // background-size: cover;
   header {
     height: 45px;
     display: flex;
@@ -10,6 +12,9 @@
     border: solid 1px;
     
     .mame {
+      .search-form {
+
+      }
     }
     .add {}
     a {
