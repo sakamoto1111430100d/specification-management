@@ -10,24 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200611090850) do
+ActiveRecord::Schema.define(version: 20200612075750) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
     t.string   "office"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id",    null: false
     t.index ["name"], name: "index_companies_on_name", using: :btree
-  end
-
-  create_table "company_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_company_users_on_company_id", using: :btree
-    t.index ["user_id"], name: "index_company_users_on_user_id", using: :btree
   end
 
   create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -38,17 +28,10 @@ ActiveRecord::Schema.define(version: 20200611090850) do
     t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
     t.index ["company_id"], name: "index_documents_on_company_id", using: :btree
     t.index ["item_id"], name: "index_documents_on_item_id", using: :btree
-  end
-
-  create_table "item_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_item_users_on_company_id", using: :btree
-    t.index ["user_id"], name: "index_item_users_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -56,7 +39,6 @@ ActiveRecord::Schema.define(version: 20200611090850) do
     t.integer  "code",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id",    null: false
     t.index ["name", "code"], name: "index_items_on_name_and_code", using: :btree
   end
 
@@ -74,4 +56,5 @@ ActiveRecord::Schema.define(version: 20200611090850) do
 
   add_foreign_key "documents", "companies"
   add_foreign_key "documents", "items"
+  add_foreign_key "documents", "users"
 end
