@@ -6,9 +6,16 @@
     border: solid 1px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
     &__name {
       line-height: 45px;
       font-size: 30px;
+    }
+    .home {
+      font-size: 25px;
+      position: absolute;
+      left: 40px;
     }
   }
   .company-main {
@@ -17,13 +24,8 @@
     &__index {
       .company-content {
         align-items: center;
-        height: 80px;
         &--document {
-          padding-bottom: 15px;
-          margin-bottom: 20px;
-          border-bottom: solid 1px;
           display: flex;
-
           &--date {
             margin: 0 15px;
           }
@@ -38,7 +40,16 @@
           }
         }
         &--item {
-          width: 150px;
+          width: 300px;
+          display: flex;
+          border-bottom: solid 1px;
+         padding: 0 15px;
+          &--name {
+            margin: 0 15px;
+          }
+          &--code {
+            margin: 0 15px;
+          }
         }
       }
     }
