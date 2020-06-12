@@ -1,6 +1,11 @@
 <div class="company-wapper">
   <div class="company-header">
-    <div class="company-header__name"><%= "#{@company.name}  #{@company.office}" %></div>
+    <div class="home">
+      <%= link_to "", user_searches_path(current_user), class: "fas fa-home" %>
+    </div>
+    <div class="company-header__name">
+      <%=  link_to "#{@company.name}  #{@company.office}", edit_user_companies_path(company_id: @company.id), method: :get %>
+    </div>
   </div>
   <div class="company-main">
     <div class="company-main__index">
@@ -10,24 +15,27 @@
       
       <div class="company-content">
         <% @documents.each do |document| %>
+        <% item = Item.find(document[:item_id]) %>
           <div class="company-content--document">
             <div class="company-content--document--date">
-              <%= link_to "#{document.date}", user_searches_path(current_user) %>
+              <%= "#{document.date}" %>
             </div>
             <div class="company-content--document--author">
-              <%= link_to "#{document.author}", user_searches_path(current_user) %>
+              <%= "#{document.author}" %>
             </div>
             <div class="company-content--document--image">
               <%= link_to "#{document.image}", user_searches_path(current_user) %>
             </div>
           </div>
-          <div class="company-content--document">
-            <div class="company-content--document--item_id">
-              <%= link_to "#{document.item_id}", user_searches_path(current_user) %>
+          <div class="company-content--item">
+            <div class="company-content--item--name">
+              <%= link_to "#{item.code}", user_searches_path(current_user) %>
+            </div>
+            <div class="company-content--item--code">
+              <%= link_to "#{item.name}", user_searches_path(current_user) %>
             </div>
           </div>
         <% end %>
-
       </div>
     </div>
   </div>
