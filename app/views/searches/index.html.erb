@@ -8,17 +8,23 @@
     </div>   
   </header>
   <main>
-    <%= form_tag search_user_searches_path(current_user), :method => 'get' do %>
-      <%= text_field_tag :keyword %>
-      <%= submit_tag 'Search', class: 'search_btn' %>
-    <% end %>
+    <div class="search-form">
+      <%= form_tag search_user_searches_path(current_user), :method => 'get', id: "search-form_id" do %>
+        <%= text_field_tag :keyword, "", placeholder: "投稿を検索する", class: "search-input" %>
+        <%= submit_tag 'Search', class: 'search_btn' %>
+      <% end %>
+    </div>
     <div class="result">
       <div class="result__company">
-        <%= render partial: "search" %>
+        <%# <%= render partial: 'search' %>
       </div>
     </div>
     <div class="index">
       <div class="index__list">
+
+        <div id="search-result">
+        </div>
+
         <div class="company-list">
           <% @companyLists.each do |company| %><br>
           <div class="company-list__element">
