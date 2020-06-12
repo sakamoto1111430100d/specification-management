@@ -43,8 +43,21 @@ class SearchesController < ApplicationController
   end
 
   def search
-    @companies = Company.search(params[:keyword])
+    return nil if params[:keyword] == ""
+    @companies = Company.where("name LIKE ?", "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
+
+    # @items = Item.where("name LIKE ?", "%#{params[:keyword]}%")
+    # @companies = Company.joins(:items).all
+
+    # modelにメソッドを持ったらエラーになる
+    # keyword = params[:keyword]
+    # @companies = Company.search(params[:keyword])
+
 
   private
 
