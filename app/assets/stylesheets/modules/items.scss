@@ -6,9 +6,16 @@
     border: solid 1px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
     &__name {
       line-height: 45px;
       font-size: 30px;
+    }
+    .home {
+      font-size: 25px;
+      position: absolute;
+      left: 40px;
     }
   }
   .item-main {
