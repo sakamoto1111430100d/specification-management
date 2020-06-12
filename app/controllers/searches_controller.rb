@@ -1,9 +1,17 @@
 class SearchesController < ApplicationController
 
   def index
+
     @companies = []
     @companyLists = Company.all
-    @itemLists = Item.all
+    itemLists = Item.all
+
+    # @documents = @companyLists.map {|company| company.users.ids }   外部キー制約がcurrent_user.idの場合をしたい
+
+
+
+
+    @itemLists = Item.all.includes(:documents).includes(:users)
     @documents
   end
 
@@ -45,6 +53,7 @@ class SearchesController < ApplicationController
   def search
     return nil if params[:keyword] == ""
     @companies = Company.where("name LIKE ?", "%#{params[:keyword]}%")
+    @user_id = current_user.id
     respond_to do |format|
       format.html
       format.json
@@ -62,15 +71,15 @@ class SearchesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:name, :office).merge(user_id: current_user.id)
+    params.require(:company).permit(:name, :office)
   end
 
   def item_params
-    params.require(:item).permit(:name, :code).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :code)
   end
 
   def document_params
-    params.require(:document).permit(:date, :author, :image).merge(company_id: @companyId, item_id: @itemId)
+    params.require(:document).permit(:date, :author, :image).merge(company_id: @companyId, item_id: @itemId, user_id: current_user.id)
   end
 
 end
