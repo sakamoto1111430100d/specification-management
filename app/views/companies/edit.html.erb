@@ -1,0 +1,18 @@
+<div class="">
+  <div class="">
+  <%= form_for @company, url: user_companies_path do |f| %>
+    <div>
+    社名<br>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+    事業所<br>
+      <%= f.text_field :office %>
+      <%= hidden_field_tag(:id, @company.id) %>
+    </div>
+    <div>
+    <br>
+      <%= f.submit "  登録  "%>
+  <% end %>
+  </div>
+</div>
