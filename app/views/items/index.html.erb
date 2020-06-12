@@ -1,6 +1,11 @@
 <div class="item-wapper">
   <div class="item-header">
-    <div class="item-header__name"><%= "#{@item.code}  #{@item.name}" %></div>
+    <div class="home">
+      <%= link_to "", user_searches_path(current_user), class: "fas fa-home" %>
+    </div>
+    <div class="item-header__name"
+      ><%= "#{@item.code}  #{@item.name}" %>
+    </div>
   </div>
   <div class="item-main">
     <div class="item-main__index">
