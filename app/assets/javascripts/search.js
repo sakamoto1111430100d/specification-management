@@ -1,25 +1,39 @@
 $(function() {
 
-  function appendCompany(company) {
-    var html = 
+  function appendCompany(keyword) {
+    if ( keyword.company_id ) {
+      var html = 
       `
       <div class="company-list">
           <div class="company-list__element">
-          <a href="/users/${company.user_id}/companies?company_id=${company.id}">
-          ${company.name}
-          ${company.id}
-          ${company.user_id}
+          <a href="/users/${keyword.user_id}/companies?company_id=${keyword.company_id}">
+          ${keyword.company_name}
+          ${keyword.company_office}
           </div>
       </div>
       `
-    $("#search-result").append(html)
+      $("#search-result").append(html);
+    } else {
+      var html = 
+      `
+      <div class="company-list">
+          <div class="company-list__element">
+          <a href="/users/${keyword.user_id}/items?items_id=${keyword.item_id}">
+          ${keyword.item_code}
+          ${keyword.item_name}
+          </div>
+      </div>
+      `
+      $("#search-result").append(html);
+    }
+    
   }
   function appendErrMsgHTML() {
     var html =
       `
       <div class="company-list">
           <div class="company-list__element">
-            ユーザーが見つかりません
+            該当なし
           </div>
       </div>
       `
@@ -27,7 +41,7 @@ $(function() {
   }
 
 
-  $("#search-form_id").on("submit", function(e) {
+  $("#search-form_id").on("keyup", function(e) {
     e.preventDefault();
     console.log(this);
     var input = $(".search-input").val();
@@ -38,12 +52,13 @@ $(function() {
       data: { keyword: input },
       dataType: 'json'
     })
-    .done(function(companies) {
+    .done(function(keywords) {
+      $("#search-result").empty();
       console.log("成功です");
-      if (companies.length !== 0 ) {
-        companies.forEach(function(company) {
-          console.log(company);
-          appendCompany(company);
+      if (keywords.length !== 0 ) {
+        keywords.forEach(function(keyword) {
+          console.log(keyword);
+          appendCompany(keyword);
         });
       }else if (input.length == 0) {
         return false;
