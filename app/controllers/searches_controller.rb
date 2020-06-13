@@ -1,11 +1,20 @@
 class SearchesController < ApplicationController
 
   def index
-
     @companies = []
     @companyLists = Company.all
-    itemLists = Item.all
+    @itemsLists = Item.all
 
+    # where(user_id: current_user.id)    
+
+      
+    # @companyList = []
+    # @companyLists.each do |companyList|
+    #   @companyList << companyList.date
+    # end
+
+
+  
     # @documents = @companyLists.map {|company| company.users.ids }   外部キー制約がcurrent_user.idの場合をしたい
 
 
@@ -53,7 +62,10 @@ class SearchesController < ApplicationController
   def search
     return nil if params[:keyword] == ""
     @companies = Company.where("name LIKE ?", "%#{params[:keyword]}%")
+    @items = Item.where("name LIKE ?", "%#{params[:keyword]}%")
+
     @user_id = current_user.id
+    
     respond_to do |format|
       format.html
       format.json
