@@ -10,8 +10,7 @@
   <main>
     <div class="search-form">
       <%= form_tag search_user_searches_path(current_user), :method => 'get', id: "search-form_id" do %>
-        <%= text_field_tag :keyword, "", placeholder: "投稿を検索する", class: "search-input" %>
-        <%= submit_tag 'Search', class: 'search_btn' %>
+        <%= text_field_tag :keyword, "", placeholder: "会社名or製品名", class: "search-input" %>
       <% end %>
     </div>
     <div class="result">
@@ -25,23 +24,25 @@
         <div id="search-result">
         </div>
 
-        <div class="company-list">
-          <% @companyLists.each do |company| %><br>
-          <div class="company-list__element">
-            <%= link_to "#{company.id}", user_companies_path(company_id: company.id, user_id: current_user.id, ), class: 'link' %>
-            <%= "#{company.name}"  %>
-            <%= "#{company.office}" %>
-          </div>
-          <% end %>
-        </div>
-        <div class="item-list">
-          <% @itemLists.each do |item| %><br>
-          <div class="item-list__element">
-            <%= link_to "#{item.id}", user_items_path(items_id: item.id, user_id: current_user.id), method: :get, class: 'link' %>
-            <%= "#{item.code}" %>
-            <%= "#{item.name}" %>
-          </div>
-          <% end %>
+        <%# <div class="company-list"> %>
+          <%# <% @companyLists.each do |company| %>
+          <%# <br> %>
+          <%# <div class="company-list__element"> %>
+            <%# <%= link_to "#{company.id}", user_companies_path(company_id: company.id, user_id: current_user.id, ), class: 'link' %>
+            <%# <%= "#{company.name}"  %>
+            <%# <%= "#{company.office}" %>
+          <%# </div> %>
+          <%# <% end %>
+        <%# </div> %>
+        <%# <div class="item-list"> %>
+          <%# <% @itemLists.each do |item| %>
+          <%# <br>  %>
+          <%# <div class="item-list__element"> %>
+            <%# <%= link_to "#{item.id}", user_items_path(items_id: item.id, user_id: current_user.id), method: :get, class: 'link' %>
+            <%# <%= "#{item.code}" %>
+            <%# <%= "#{item.name}" %>
+          <%# </div> %>
+          <%# <% end %>
         </div>
       </div>
     </div>
