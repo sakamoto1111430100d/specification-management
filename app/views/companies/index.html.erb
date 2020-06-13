@@ -10,33 +10,28 @@
   <div class="company-main">
     <div class="company-main__index">
       <div>
-        　　投稿日　　　投稿者　　　コード　　　製品名
       </div>
       
-      <div class="company-content">
+      <table class="company-content">
+        <tr>
+          <th>コード</th>
+          <th>品名</th>
+          <th>締結日</th>
+          <th>納入仕様書</th>
+          <th>投稿者</th>
+        </tr>
         <% @documents.each do |document| %>
         <% item = Item.find(document[:item_id]) %>
-          <div class="company-content--document">
-            <div class="company-content--document--date">
-              <%= "#{document.date}" %>
-            </div>
-            <div class="company-content--document--author">
-              <%= "#{document.author}" %>
-            </div>
-            <div class="company-content--document--image">
-              <%= link_to "#{document.image}", user_searches_path(current_user) %>
-            </div>
-          </div>
-          <div class="company-content--item">
-            <div class="company-content--item--name">
-              <%= link_to "#{item.code}", user_searches_path(current_user) %>
-            </div>
-            <div class="company-content--item--code">
-              <%= link_to "#{item.name}", user_searches_path(current_user) %>
-            </div>
-          </div>
+        <tr>
+          <td><%= "#{item.code}" %></td>
+          <td><%= "#{item.name}" %></td>
+          <td><%= "#{document.date}" %></td>
+          <td><%= link_to "image", "#{document.image}" %></td>
+          <td><%= "#{document.author}" %></td>
+        </tr> 
         <% end %>
-      </div>
+      </table>
+
     </div>
   </div>
   <div class="company-footer"></div>
