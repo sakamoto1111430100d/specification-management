@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
-    @documents = Document.where(company_id: params[:company_id])
+    @documents = Document.where(company_id: params[:company_id]).order("item_id ASC")
   end
 
   def edit
