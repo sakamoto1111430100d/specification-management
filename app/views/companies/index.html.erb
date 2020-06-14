@@ -1,0 +1,38 @@
+<div class="company-wapper">
+  <div class="company-header">
+    <div class="home">
+      <%= link_to "", user_searches_path(current_user), class: "fas fa-home" %>
+    </div>
+    <div class="company-header__name">
+      <%=  link_to "#{@company.name}  #{@company.office}", edit_user_companies_path(company_id: @company.id), method: :get %>
+    </div>
+  </div>
+  <div class="company-main">
+    <div class="company-main__index">
+      <div>
+      </div>
+      
+      <table class="company-content">
+        <tr>
+          <th>コード</th>
+          <th>品名</th>
+          <th>締結日</th>
+          <th>納入仕様書</th>
+          <th>投稿者</th>
+        </tr>
+        <% @documents.each do |document| %>
+        
+        <tr>
+          <td><%= link_to "#{document.item.code}", user_items_path(items_id: document.item.id) %></td>
+          <td><%= link_to "#{document.item.name}", user_items_path(items_id: document.item.id) %></td>
+          <td><%= "#{document.date}" %></td>
+          <td><%= link_to "image", "#{document.image}" %></td>
+          <td><%= "#{document.author}" %></td>
+        </tr> 
+        <% end %>
+      </table>
+
+    </div>
+  </div>
+  <div class="company-footer"></div>
+</div>

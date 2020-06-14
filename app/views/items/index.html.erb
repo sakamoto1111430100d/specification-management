@@ -1,0 +1,35 @@
+<div class="item-wapper">
+  <div class="item-header">
+    <div class="home">
+      <%= link_to "", user_searches_path(current_user), class: "fas fa-home" %>
+    </div>
+    <div class="item-header__name"
+      ><%= "#{@item.code}   #{@item.name}" %>
+    </div>
+  </div>
+  <div class="item-main">
+    <div class="item-main__index">
+
+      <table class="item-content">
+        <tr>
+          <th>締結日</th>
+          <th>納入仕様書</th>
+          <th>投稿者</th>
+          <th>会社名</th>
+          <th>事業所</th>
+        </tr>
+        <% @documents.each do |document| %>
+        <tr>
+          <td><%= "#{document.date}" %></td>
+          <td><%= link_to "image", "#{document.image}" %></td>
+          <td><%= "#{document.author}" %></td>
+          <td><%= link_to "#{document.company.name}", user_companies_path(company_id: document.company.id) %></td>
+          <td><%= link_to "#{document.company.office}", user_companies_path(company_id: document.company.id) %></td>
+        </tr>
+        <% end %>
+      </table>
+
+    </div>
+  </div>
+  <div class="item-footer"></div>
+</div>

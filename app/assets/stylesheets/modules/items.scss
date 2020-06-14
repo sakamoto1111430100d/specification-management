@@ -1,0 +1,48 @@
+.item-wapper {
+  height: 100vh;
+  position: relative;
+  .item-header {
+    height: 45px;
+    border: solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &__name {
+      line-height: 45px;
+      font-size: 20px;
+    }
+    .home {
+      font-size: 20px;
+      position: absolute;
+      left: 40px;
+    }
+  }
+  .item-main {
+    height: calc(100vh - 90);
+    padding: 50px 30px 15px 30px;
+
+    &__index {
+      display: flex;
+      justify-content: center;
+      .item-content {
+        width: 55vw ;
+        th {
+          padding: 5px;
+          text-align: center;
+        }
+        td {
+          padding: 5px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .item-footer {
+    height: 45px;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    border: solid 1px;
+  }
+}

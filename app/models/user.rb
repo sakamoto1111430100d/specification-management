@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :companies
-  has_many :items
+  has_many :documents
+  has_many :documents, foreign_key: 'user_id'
+  has_many :companies, through: :documents
+  has_many :items, through: :documents
+
+
 end
