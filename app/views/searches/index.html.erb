@@ -27,13 +27,11 @@
             </tr>
             <% @companyLists.each do |company| %>
             <tr>
-              <td><%= link_to "#{company.name}", user_companies_path(company_id: company.id) %></td>
-              <td><%= link_to "#{company.office}", user_companies_path(company_id: company.id) %></td>
+              <td><%= link_to "#{company.name}", user_companies_path(company_id: company.id, user_id: current_user.id) %></td>
+              <td><%= link_to "#{company.office}", user_companies_path(company_id: company.id,  user_id: current_user.id) %></td>
             </tr>
             <% end %>
           </table>
-
-
           <table class="list__item">
             <tr>
               <th>コード</th>
@@ -41,33 +39,12 @@
             </tr>
             <% @itemLists.each do |item| %>
             <tr>
-              <td><%= link_to "#{item.code}", user_items_path(items_id: item.id) %></td>
-              <td><%= link_to "#{item.name}", user_items_path(items_id: item.id) %></td>
+              <td><%= link_to "#{item.code}", user_items_path(items_id: item.id, user_id: current_user.id) %></td>
+              <td><%= link_to "#{item.name}", user_items_path(items_id: item.id, user_id: current_user.id) %></td>
             </tr>
             <% end %>
           </table>
         </div>
-
-        <%# <div class="company-list"> %>
-          <%# <% @companyLists.each do |company| %>
-          <%# <br> %>
-          <%# <div class="company-list__element"> %>
-            <%# <%= link_to "#{company.id}", user_companies_path(company_id: company.id, user_id: current_user.id, ), class: 'link' %>
-            <%# <%= "#{company.name}"  %>
-            <%# <%= "#{company.office}" %>
-          <%# </div> %>
-          <%# <% end %>
-        <%# </div> %>
-        <%# <div class="item-list"> %>
-          <%# <% @itemLists.each do |item| %>
-          <%# <br>  %>
-          <%# <div class="item-list__element"> %>
-            <%# <%= link_to "#{item.id}", user_items_path(items_id: item.id, user_id: current_user.id), method: :get, class: 'link' %>
-            <%# <%= "#{item.code}" %>
-            <%# <%= "#{item.name}" %>
-          <%# </div> %>
-          <%# <% end %>
-        <%# </div> %>
       </div>
     </div>
   </main>
