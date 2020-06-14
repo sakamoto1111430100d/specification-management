@@ -10,10 +10,10 @@
     position: relative;
     &__name {
       line-height: 45px;
-      font-size: 30px;
+      font-size: 20px;
     }
     .home {
-      font-size: 25px;
+      font-size: 20px;
       position: absolute;
       left: 40px;
     }
@@ -25,13 +25,14 @@
       display: flex;
       justify-content: center;
       .company-content {
-        width: 80vw ;
-        
+        width: 55vw ;
         th {
           padding: 5px;
+          text-align: center;
         }
         td {
           padding: 5px;
+          text-align: center;
         }
       }
     }
