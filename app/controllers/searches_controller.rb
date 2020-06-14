@@ -2,26 +2,8 @@ class SearchesController < ApplicationController
 
   def index
     @companies = []
-    @companyLists = Company.all
-    @itemsLists = Item.all
-
-    # where(user_id: current_user.id)    
-
-      
-    # @companyList = []
-    # @companyLists.each do |companyList|
-    #   @companyList << companyList.date
-    # end
-
-
-  
-    # @documents = @companyLists.map {|company| company.users.ids }   外部キー制約がcurrent_user.idの場合をしたい
-
-
-
-
-    @itemLists = Item.all.includes(:documents).includes(:users)
-    @documents
+    @companyLists = Company.includes(:users).where(users: {id: current_user}).order("companies.updated_at DESC").limit(5)
+    @itemLists = Item.includes(:users).where(users: {id: current_user}).order("items.updated_at DESC").limit(5)
   end
 
   def new
@@ -61,8 +43,11 @@ class SearchesController < ApplicationController
 
   def search
     return nil if params[:keyword] == ""
-    @companies = Company.where("name LIKE ?", "%#{params[:keyword]}%")
-    @items = Item.where("name LIKE ?", "%#{params[:keyword]}%")
+    companyLists = Company.includes(:users).where(users: {id: current_user})
+    itemsLists = Item.includes(:users).where(users: {id: current_user})
+
+    @companies = companyLists.where("name LIKE ?", "%#{params[:keyword]}%").order("companies.id").limit(5)
+    @items = itemsLists.where("name LIKE ?", "%#{params[:keyword]}%").order("items.id").limit(5)
 
     @user_id = current_user.id
     
