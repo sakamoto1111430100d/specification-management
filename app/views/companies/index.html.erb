@@ -21,10 +21,10 @@
           <th>投稿者</th>
         </tr>
         <% @documents.each do |document| %>
-        <% item = Item.find(document[:item_id]) %>
+        
         <tr>
-          <td><%= "#{item.code}" %></td>
-          <td><%= "#{item.name}" %></td>
+          <td><%= link_to "#{document.item.code}", user_items_path(items_id: document.item.id) %></td>
+          <td><%= link_to "#{document.item.name}", user_items_path(items_id: document.item.id) %></td>
           <td><%= "#{document.date}" %></td>
           <td><%= link_to "image", "#{document.image}" %></td>
           <td><%= "#{document.author}" %></td>
