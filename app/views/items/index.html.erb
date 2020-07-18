@@ -1,7 +1,7 @@
 <div class="item-wapper">
   <div class="item-header">
     <div class="home">
-      <%= link_to "", user_searches_path(current_user), class: "fas fa-home" %>
+      <%= link_to "", searches_path(current_user), class: "fas fa-home" %>
     </div>
     <div class="item-header__name"
       ><%= "#{@item.code}   #{@item.name}" %>
@@ -23,8 +23,8 @@
           <td><%= "#{document.date}" %></td>
           <td><%= link_to "image", "#{document.image}" %></td>
           <td><%= "#{document.author}" %></td>
-          <td><%= link_to "#{document.company.name}", user_companies_path(company_id: document.company.id) %></td>
-          <td><%= link_to "#{document.company.office}", user_companies_path(company_id: document.company.id) %></td>
+          <td><%= link_to "#{document.company.name}", companies_path(company_id: document.company.id) %></td>
+          <td><%= link_to "#{document.company.office}", companies_path(company_id: document.company.id) %></td>
         </tr>
         <% end %>
       </table>

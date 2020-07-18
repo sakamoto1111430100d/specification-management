@@ -4,7 +4,7 @@
       <%= link_to "文書管理", destroy_user_session_path, method: :delete, class: 'btn'%>
     </div>
     <div class="add">
-      <%= link_to "", new_user_search_path(current_user), method: :get, class: 'fas fa-plus'%>
+      <%= link_to "", new_search_path, method: :get, class: 'fas fa-plus'%>
     </div>   
   </header>
   <main>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="search-form">
-      <%= form_tag search_user_searches_path(current_user), :method => 'get', id: "search-form_id" do %>
+      <%= form_tag search_searches_path(current_user), :method => 'get', id: "search-form_id" do %>
         <%= text_field_tag :keyword, "", placeholder: "会社名or製品名", class: "search-input" %>
       <% end %>
     </div>
@@ -27,8 +27,8 @@
             </tr>
             <% @companyLists.each do |company| %>
             <tr>
-              <td><%= link_to "#{company.name}", user_companies_path(company_id: company.id, user_id: current_user.id) %></td>
-              <td><%= link_to "#{company.office}", user_companies_path(company_id: company.id,  user_id: current_user.id) %></td>
+              <td><%= link_to "#{company.name}", companies_path(company_id: company.id, user_id: current_user.id) %></td>
+              <td><%= link_to "#{company.office}", companies_path(company_id: company.id,  user_id: current_user.id) %></td>
             </tr>
             <% end %>
           </table>
@@ -39,8 +39,8 @@
             </tr>
             <% @itemLists.each do |item| %>
             <tr>
-              <td><%= link_to "#{item.code}", user_items_path(items_id: item.id, user_id: current_user.id) %></td>
-              <td><%= link_to "#{item.name}", user_items_path(items_id: item.id, user_id: current_user.id) %></td>
+              <td><%= link_to "#{item.code}", items_path(items_id: item.id, user_id: current_user.id) %></td>
+              <td><%= link_to "#{item.name}", items_path(items_id: item.id, user_id: current_user.id) %></td>
             </tr>
             <% end %>
           </table>

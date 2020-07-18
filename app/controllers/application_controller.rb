@@ -9,8 +9,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
-  def after_sign_in_path_for(resource_or_scope)
-    user_searches_path(current_user)
+  def after_sign_in_path_for(resource)
+    if resource
+      searches_path
+    else
+      user_session_path
+    end
   end
-  
+
 end

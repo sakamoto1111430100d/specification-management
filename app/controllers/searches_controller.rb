@@ -13,6 +13,7 @@ class SearchesController < ApplicationController
   end
 
   def create
+    binding.pry
     company = Company.new(company_params)
     company_name = company[:name]
     company_office = company[:office]
@@ -38,7 +39,7 @@ class SearchesController < ApplicationController
     document = Document.new(document_params)
     document.save
 
-    redirect_to user_searches_path
+    redirect_to searches_path
   end
 
   def search
@@ -76,7 +77,7 @@ class SearchesController < ApplicationController
   end
 
   def document_params
-    params.require(:document).permit(:date, :author, :image, :image_cache, :remove_image).merge(company_id: @companyId, item_id: @itemId, user_id: current_user.id)
+    params.require(:document).permit(:date, :author, :image).merge(company_id: @companyId, item_id: @itemId, user_id: current_user.id)
   end
 
 end

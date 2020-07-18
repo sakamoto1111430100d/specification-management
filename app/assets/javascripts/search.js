@@ -6,7 +6,7 @@ $(function() {
       `
       <div class="company-list">
           <div class="company-list__element">
-          <a href="/users/${keyword.user_id}/companies?company_id=${keyword.company_id}">
+          <a href="/companies?company_id=${keyword.company_id}">
           ${keyword.company_name}
           ${keyword.company_office}
           </div>
@@ -18,7 +18,7 @@ $(function() {
       `
       <div class="company-list">
           <div class="company-list__element">
-          <a href="/users/${keyword.user_id}/items?items_id=${keyword.item_id}">
+          <a href="/items?items_id=${keyword.item_id}">
           ${keyword.item_code}
           ${keyword.item_name}
           </div>
@@ -45,10 +45,9 @@ $(function() {
     e.preventDefault();
     console.log(this);
     var input = $(".search-input").val();
-    var url = $(this).attr('action')
     $.ajax( {
       type: 'get',
-      url: url,
+      url: '/searches/search',
       data: { keyword: input },
       dataType: 'json'
     })

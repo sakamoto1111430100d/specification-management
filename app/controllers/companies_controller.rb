@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
   def update
     company = Company.where(id: params[:id])
     company.update(company_params)
-    redirect_to user_companies_path(company_id: params[:id], user_id: current_user.id, )
+    redirect_to companies_path(company_id: params[:id], user_id: current_user.id)
   end
 
   private

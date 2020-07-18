@@ -1,5 +1,5 @@
 <div class="form">
-  <%= form_for @company, url: user_searches_path do |f| %>
+  <%= form_for @company, html: { multipart: true }, url: searches_path do |f| %>
     <div>
     社名<br>
       <%= f.text_field :name %>
@@ -30,7 +30,7 @@
         </div>
         <div>
         納入仕様書（URL）<br>
-          <%= d.text_field :image %>
+          <%= d.file_field :image %>
         </div>
       <div>
       <br>
