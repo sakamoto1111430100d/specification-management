@@ -1,7 +1,12 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "modules/searches";
-@import "modules/searches_new";
-@import "modules/companies";
-@import "modules/items";
+@import "modules/search/index";
+@import "modules/search/new";
+@import "modules/company/index";
+@import "modules/company/edit";
+@import "modules/item/index";
+@import "modules/user";
+@import "modules/document/show";
+@import "modules/document/edit";
+@import "modules/document/new";

@@ -8,41 +8,41 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    &__name {
-      line-height: 45px;
-      font-size: 20px;
-    }
-    .home {
-      font-size: 20px;
+    font-size: 18px;
+    &__name {}
+    &__home {
       position: absolute;
-      left: 40px;
+      left: 20px;
     }
   }
   .item-main {
     height: calc(100vh - 90);
     padding: 50px 30px 15px 30px;
-
+    margin-bottom: 100px;
     &__index {
       display: flex;
       justify-content: center;
       .item-content {
-        width: 55vw ;
+        width: 60vw ;
+        tr {
+          border-bottom: 1px outset #eee;
+        }
         th {
-          padding: 5px;
           text-align: center;
+          height: 20px;
+          border-top: 2px outset #ccc;
+          border-bottom: 2px outset #ccc;
+          padding: 0 20px;
         }
         td {
-          padding: 5px;
+          padding: 0 20px;
           text-align: center;
+          height: 80px;
+        }
+        td.detail_css {
+          border-bottom: hidden !important;
         }
       }
     }
-  }
-  .item-footer {
-    height: 45px;
-    width: 100vw;
-    position: absolute;
-    bottom: 0;
-    border: solid 1px;
   }
 }

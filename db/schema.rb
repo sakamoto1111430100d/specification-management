@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200612071004) do
+ActiveRecord::Schema.define(version: 20200721092053) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -21,14 +21,15 @@ ActiveRecord::Schema.define(version: 20200612071004) do
   end
 
   create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "date",       null: false
-    t.string   "author",     null: false
-    t.string   "image"
+    t.integer  "date",                     null: false
+    t.string   "author",                   null: false
+    t.string   "image",                    null: false
     t.integer  "company_id"
     t.integer  "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "user_id"
+    t.text     "note",       limit: 65535
     t.index ["company_id"], name: "index_documents_on_company_id", using: :btree
     t.index ["item_id"], name: "index_documents_on_item_id", using: :btree
     t.index ["user_id"], name: "index_documents_on_user_id", using: :btree

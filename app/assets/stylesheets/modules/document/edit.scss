@@ -1,0 +1,25 @@
+.document_edit {
+  text-align: center;
+  .document_edit_head {
+    height: 45px;
+    border: solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 18px;
+    .document_edit_home {
+      position: absolute;
+      left: 20px;
+    }
+  }
+  .document_edit_content {
+    margin-bottom: 100px;
+    &__document {
+      margin: 30px 0;
+    }
+    &__element {
+      margin: 20px 0;
+    }
+  }
+}

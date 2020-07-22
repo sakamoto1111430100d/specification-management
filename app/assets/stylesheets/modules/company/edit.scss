@@ -1,0 +1,25 @@
+.company_edit {
+  text-align: center;
+  .company_edit_head {
+    height: 45px;
+    border: solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 18px;
+    .company_edit_home {
+      position: absolute;
+      left: 20px;
+    }
+  }
+  .company_edit_content {
+    margin-bottom: 100px;
+    &__company {
+      margin: 30px 0;
+    }
+    &__element {
+      margin: 20px 0;
+    }
+  }
+}

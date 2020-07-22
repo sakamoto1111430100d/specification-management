@@ -1,0 +1,47 @@
+<div class="document-wapper">
+  <div class="document-header">
+    <div class="document-header__home">
+      <%= link_to "", searches_path, class: "fas fa-home" %>
+    </div>
+    <div class="document-header__name">
+      <%= "#{@item.code}　#{@item.name}　　" %>
+      <%= "#{@company.name}　#{@company.office}" %>
+    </div>
+    <div class="document-header__add">
+      <%= link_to "", new_document_path(company_id: @company.id, item_id: @item.id), method: :get, class: 'fas fa-plus'%>
+    </div>   
+  </div>
+  <div class="notifications">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: key) %>
+    <% end %>
+  </div>
+  <div class="document-main">
+    <div class="document-main__index">
+    <% if @documents.present? %>
+      <table class="document-content">
+        <tr>
+          <th>締結日</th>
+          <th>納入仕様書</th>
+          <th>投稿者</th>
+          <th>備考</th>
+        </tr>
+        <% @documents.each do |document| %>
+        <tr>
+          <td><%= "#{document.date}" %></td>
+          <td><%= link_to "image", "#{document.image}" %></td>
+          <td><%= "#{document.author}" %></td>
+          <td class="document-content__note"><%= "#{document.note}" %></td>
+          <td class='note_button'><div class='note_button__button'><%= link_to "備考追記", edit_document_path(id: document.id), method: :get %></div></td>
+          <td class='delete_button'><div class='delete_button__button'><%= link_to "削除", document_path(id: document.id, company_id: @company.id, item_id: @item.id), method: :delete, data: { confirm: '削除しますか？' } %></div></td>
+        </tr>
+        <% end %>
+      </table>
+      <% else %>
+        <div class="company-content__none">
+          該当のデータはありません
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

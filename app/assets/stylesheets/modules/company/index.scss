@@ -1,0 +1,46 @@
+.company-wapper {
+  height: 100vh;
+  position: relative;
+  .company-header {
+    height: 45px;
+    border: solid 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 18px;
+    &__home {}
+    &__name {}
+    &__edit {}
+  }
+  .company-main {
+    height: calc(100vh - 90);
+    padding: 50px 30px 15px 30px;
+    margin-bottom: 100px;
+    &__index {
+      display: flex;
+      justify-content: center;
+      .company-content {
+        width: 60vw ;
+        tr {
+          border-bottom: 1px outset #eee;
+        }
+        th {
+          text-align: center;
+          height: 20px;
+          border-top: 2px outset #ccc;
+          border-bottom: 2px outset #ccc;
+          padding: 0 20px;
+        }
+        td {
+          padding: 0 20px;
+          text-align: center;
+          height: 80px;
+        }
+        td.detail_css {
+          border-bottom: hidden !important;
+        }
+      }
+    }
+  }
+}

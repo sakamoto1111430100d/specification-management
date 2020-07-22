@@ -41,9 +41,8 @@ $(function() {
   }
 
 
-  $("#search-form_id").on("keyup", function(e) {
+  $("#keyword").on("keyup", function(e) {
     e.preventDefault();
-    console.log(this);
     var input = $(".search-input").val();
     $.ajax( {
       type: 'get',
@@ -53,10 +52,8 @@ $(function() {
     })
     .done(function(keywords) {
       $("#search-result").empty();
-      console.log("成功です");
       if (keywords.length !== 0 ) {
         keywords.forEach(function(keyword) {
-          console.log(keyword);
           appendCompany(keyword);
         });
       }else if (input.length == 0) {

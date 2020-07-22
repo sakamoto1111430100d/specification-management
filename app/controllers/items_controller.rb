@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
-    @item = Item.find(params[:items_id])
-    @documents = Document.where(item_id: params[:items_id]).order("date ASC")
+    if @item = Item.find(params[:item_id])
+      @documents = Document.where(item_id: params[:item_id]).order("date ASC")
+    end
   end
 end

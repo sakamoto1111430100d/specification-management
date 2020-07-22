@@ -1,7 +1,7 @@
 <div class="wapper">
   <header>
-    <div class="name">
-      <%= link_to "文書管理", destroy_user_session_path, method: :delete, class: 'btn'%>
+    <div class="logout">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
     </div>
     <div class="add">
       <%= link_to "", new_search_path, method: :get, class: 'fas fa-plus'%>
@@ -13,34 +13,36 @@
       </div>
     </div>
     <div class="search-form">
-      <%= form_tag search_searches_path(current_user), :method => 'get', id: "search-form_id" do %>
-        <%= text_field_tag :keyword, "", placeholder: "会社名or製品名", class: "search-input" %>
-      <% end %>
+      <%= text_field_tag :keyword, "", placeholder: "会社名 or 製品名", class: "search-input" %>
     </div>
     <div class="index">
       <div class="index__list">
         <div class="list">
           <table class="list__company">
             <tr>
-              <th>社名</th>
+              <th></th>
+              <th>会社名</th>
               <th>事業所</th>
             </tr>
             <% @companyLists.each do |company| %>
             <tr>
-              <td><%= link_to "#{company.name}", companies_path(company_id: company.id, user_id: current_user.id) %></td>
-              <td><%= link_to "#{company.office}", companies_path(company_id: company.id,  user_id: current_user.id) %></td>
+              <td><%= link_to "", companies_path(company_id: company.id), class: "far fa-check-square" %></td>
+              <td><%="#{company.name}"%></td>
+              <td><%="#{company.office}"%></td>
             </tr>
             <% end %>
           </table>
           <table class="list__item">
             <tr>
+              <th></th>
               <th>コード</th>
               <th>製品名</th>
             </tr>
             <% @itemLists.each do |item| %>
             <tr>
-              <td><%= link_to "#{item.code}", items_path(items_id: item.id, user_id: current_user.id) %></td>
-              <td><%= link_to "#{item.name}", items_path(items_id: item.id, user_id: current_user.id) %></td>
+              <td><%= link_to "", items_path(item_id: item.id), class: "far fa-check-square" %></td>
+              <td><%="#{item.code}"%></td>
+              <td><%="#{item.name}"%></td>
             </tr>
             <% end %>
           </table>
@@ -48,5 +50,4 @@
       </div>
     </div>
   </main>
-  <footer></footer>
 </div>

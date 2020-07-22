@@ -9,5 +9,8 @@ class User < ApplicationRecord
   has_many :companies, through: :documents
   has_many :items, through: :documents
 
-
+  validates :email, presence: true
+  validates :password, presence: true
+  validates :password, confirmation: true
+  validates :password_confirmation, presence: true
 end

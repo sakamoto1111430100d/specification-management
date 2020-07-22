@@ -1,18 +1,31 @@
-<div class="">
-  <div class="">
-  <%= form_for @company, url: companies_path do |f| %>
-    <div>
-    社名<br>
-      <%= f.text_field :name %>
+<div class="company_edit">
+  <div class="company_edit_head">
+    <div class="company_edit_home">
+      <%= link_to "", searches_path, class: "fas fa-home" %>
     </div>
-    <div>
-    事業所<br>
-      <%= f.text_field :office %>
-      <%= hidden_field_tag(:id, @company.id) %>
+  会社名編集
+  </div>
+  <div class="notifications">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: key) %>
+    <% end %>
+  </div>
+  <div class="company_edit_content">
+    <div class="company_edit_content__company">
+    <%= form_for @company do |f| %>
+      <div class="company_edit_content__element">
+      会社名<br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="company_edit_content__element">
+      事業所<br>
+        <%= f.text_field :office %>
+        <%= hidden_field_tag(:company_id, @company.id) %>
+      </div>
+      <div>
+      <br>
+        <%= f.submit "  登録  "%>
+    <% end %>
     </div>
-    <div>
-    <br>
-      <%= f.submit "  登録  "%>
-  <% end %>
   </div>
 </div>

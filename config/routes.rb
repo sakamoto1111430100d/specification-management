@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'searches#index'
-  resources :users, only: [:edit, :update]
-  resources :companies, only: :index
-  resource :companies, only: [:edit, :update]
-  resources :items, only: :index
+  resources :companies, only: [:index, :edit, :update]
+  resources :items, only: [:index]
+  resources :documents, only: [:destroy, :edit, :update, :new, :create]
+  resource :documents, only: [:show]
   resources :searches, only: [:index, :new, :create] do
     collection do
       get 'search'

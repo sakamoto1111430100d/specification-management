@@ -1,0 +1,72 @@
+.document-wapper {
+  height: 100vh;
+  position: relative;
+  .document-header {
+    height: 45px;
+    border: solid 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    padding: 0 20px;
+    &__name {}
+    &__home {}
+    &__add {}
+  }
+  .document-main {
+    height: calc(100vh - 90);
+    padding: 50px 30px 15px 30px;
+    margin-bottom: 100px;
+    &__index {
+      display: flex;
+      justify-content: center;
+      .document-content {
+        width: 55vw ;
+        tr {
+          border-bottom: 1px outset #eee;
+        }
+        th {
+          text-align: center;
+          height: 20px;
+          border-top: 2px outset #ccc;
+          border-bottom: 2px outset #ccc;
+          padding: 0 20px;
+        }
+        td {
+          padding: 0 20px;
+          text-align: center;
+          height: 80px;
+        }
+        td.note_button {
+          border-radius: 4px;
+          border-bottom: hidden !important;
+           .note_button__button a {
+            background-color: #ccc;
+            border-radius: 5px;
+            padding: 1px 5px;
+            color: black;
+            &:hover {
+              opacity: 0.7;
+            }
+          }  
+        }
+        td.delete_button {
+          border-bottom: hidden !important;
+          border-radius: 4px;
+          .delete_button__button a {
+            background-color: #ccc;
+            border-radius: 5px;
+            padding: 1px 5px;
+            color: black;
+            &:hover {
+              opacity: 0.7;
+            }
+          }
+        }
+        &__note {
+          max-width: 150px;
+        }
+      }
+    }
+  }
+}
