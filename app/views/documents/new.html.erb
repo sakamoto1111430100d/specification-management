@@ -1,46 +1,41 @@
-<div class="document_new_head">
-  <div class="document_new_home">
-    <%= link_to "　ホーム", searches_path, class: "fas fa-home" %>
-  </div>
-納入仕様書登録
-</div>
-<div class="notifications">
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: key) %>
-  <% end %>
-</div>
-<div class="document_new_content">
-  <%= form_for @document, html: { multipart: true } do |f| %>
-  <%= f.hidden_field :item_id, :value => params[:item_id] %>
-  <%= f.hidden_field :company_id, :value => params[:company_id] %>
-    <div class="document_new_content__document">
-      <div class="document_new_content__company--wrapper">
-        <div class="document_new_content__head">
-          納入仕様書情報
-        </div>
-        <div class="document_new_content__element">
-        ＜締結日＞（例 20200101）<br>
-          <%= f.text_field :date, class: "document_new_form" %>
-        </div>
-        <div class="document_new_content__element">
-        ＜投稿者＞<br>
-          <%= f.text_field :author, class: "document_new_form" %>
-        </div>
-        <div class="document_new_content__element">
-        ＜PDFファイル＞<br>
-          <%= f.file_field :image, class: "document_new_form" %>
-        </div>
-        <div class="document_new_content__element">
-        ＜備考＞（任意）<br>
-          <%= f.text_area :note, class: "document_new_form" %>
-        </div>
-        
-      </div>
+<%= render "layouts/header_home" %>
+<%= render "layouts/notifications" %>
+<div>
+  <div class="document_new_conten-name">
+    <div class="document_new_conten-name--content">
+      納入仕様書登録
     </div>
-    <div class="document_new_content__head">
-      <br>
-        <%= f.submit "  登録  "%>
+  </div>
+  <div class="document_new_content">
+    <%= form_for @document, html: { multipart: true } do |f| %>
+    <%= f.hidden_field :item_id, :value => params[:item_id] %>
+    <%= f.hidden_field :company_id, :value => params[:company_id] %>
+      <div class="document_new_content__document">
+        <div class="document_new_content__company--wrapper">
+          <div class="document_new_content__element">
+          ＜締結日＞（例 20200101）<br>
+            <%= f.text_field :date, class: "document_new_form" %>
+          </div>
+          <div class="document_new_content__element">
+          ＜投稿者＞<br>
+            <%= f.text_field :author, class: "document_new_form" %>
+          </div>
+          <div class="document_new_content__element">
+          ＜PDFファイル＞<br>
+            <%= f.file_field :image, class: "document_new_form" %>
+          </div>
+          <div class="document_new_content__element">
+          ＜備考＞（任意）<br>
+            <%= f.text_area :note, class: "document_new_form" %>
+          </div>
+          
+        </div>
       </div>
-    <% end %>
+      <div class="document_new_content__submit">
+        <br>
+          <%= f.submit "  登録  "%>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

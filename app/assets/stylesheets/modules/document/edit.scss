@@ -1,25 +1,28 @@
-.document_edit {
-  text-align: center;
-  .document_edit_head {
-    height: 45px;
-    border: solid 1px;
+.document_edit_content-name {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &--content {
+    font-size: $font_size1;
+  }
+}
+.document_edit_content {
+  padding-bottom: $padding_bottom;
+  &__document {
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: relative;
-    font-size: 18px;
-    .document_edit_home {
-      position: absolute;
-      left: 30px;
+    &--wrapper {
+      width: 300px;
     }
   }
-  .document_edit_content {
-    margin-bottom: 100px;
-    &__document {
-      margin: 30px 0;
-    }
-    &__element {
-      margin: 20px 0;
-    }
+  &__element {
+    margin: 20px 0;
   }
+  &__input {
+    text-align: center;
+  }
+}
+#document_note {
+  width: 100%;
 }

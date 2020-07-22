@@ -12,7 +12,7 @@ $(function() {
           </div>
       </div>
       `
-      $("#search-result").append(html);
+      $(".create-content").append(html);
     } else {
       var html = 
       `
@@ -24,7 +24,7 @@ $(function() {
           </div>
       </div>
       `
-      $("#search-result").append(html);
+      $(".create-content").append(html);
     }
     
   }
@@ -37,12 +37,30 @@ $(function() {
           </div>
       </div>
       `
-    $("#search-result").append(html)
+    $(".create-content").append(html)
   }
 
+  function createContent() {
+    var html =
+    `
+    <div class="create-content"></div>
+    `
+    $(".search-result-content").append(html)
+  }
+
+  timer = null
 
   $("#keyword").on("keyup", function(e) {
     e.preventDefault();
+
+    if ( timer !== null ) { clearTimeout(timer); };
+
+    timer = setTimeout(function(){
+      $(".create-content").remove();
+    },5000);
+
+    $(".create-content").remove();
+    createContent();
     var input = $(".search-input").val();
     $.ajax( {
       type: 'get',
@@ -51,7 +69,7 @@ $(function() {
       dataType: 'json'
     })
     .done(function(keywords) {
-      $("#search-result").empty();
+      $(".create-content").empty();
       if (keywords.length !== 0 ) {
         keywords.forEach(function(keyword) {
           appendCompany(keyword);

@@ -1,78 +1,76 @@
-<div class="search_new_head">
-  <div class="search_new_home">
-    <%= link_to "　ホーム", searches_path, class: "fas fa-home" %>
+<%= render "layouts/header_home" %>
+<%= render "layouts/notifications" %>
+<div>
+  <div class="search_new_conten-name">
+    <div class="search_new_conten-name--content">
+      納入仕様書登録
+    </div>
   </div>
-納入仕様書登録
-</div>
-<div class="notifications">
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: key) %>
-  <% end %>
-</div>
-<div class="search_new_content">
-  <%= form_for @company, html: { multipart: true }, url: searches_path do |f| %>
-    <div class="search_new_content__company">
-      <div class="search_new_content__company--wrapper">
-        <div class="search_new_content__head">
-          会社情報
-        </div>
-        <div class="search_new_content__element">
-        ＜会社名＞<br>
-          <%= f.text_field :name, class: "serch_new_form" %>
-        </div>
-        <div class="search_new_content__element">
-        ＜事業所＞（任意）<br>
-          <%= f.text_field :office, class: "serch_new_form" %>
+  <div class="search_new_content">
+    <%= form_for @company, html: { multipart: true }, url: searches_path do |f| %>
+      <div class="search_new_content__company">
+        <div class="search_new_content__company--wrapper">
+          <div class="search_new_content__head">
+            会社情報
+          </div>
+          <div class="search_new_content__element">
+          ＜会社名＞<br>
+            <%= f.text_field :name, class: "serch_new_form" %>
+          </div>
+          <div class="search_new_content__element">
+          ＜事業所＞（任意）<br>
+            <%= f.text_field :office, class: "serch_new_form" %>
+          </div>
         </div>
       </div>
-    </div>
-    <%= fields_for @item do |c| %>
-      <div class="search_new_content__item">
-        <div class="search_new_content__item--wrapper">
-          <div class="search_new_content__head">
-            製品情報
-          </div>
-          <div class="search_new_content__element">
-          ＜製品名＞<br>
-            <%= c.text_field :name, class: "serch_new_form" %>
-          </div>
-          <div class="search_new_content__element">
-          ＜コード＞<br>
-            <%= c.text_field :code, class: "serch_new_form" %>
+      <%= fields_for @item do |c| %>
+        <div class="search_new_content__item">
+          <div class="search_new_content__item--wrapper">
+            <div class="search_new_content__head">
+              製品情報
+            </div>
+            <div class="search_new_content__element">
+            ＜製品名＞<br>
+              <%= c.text_field :name, class: "serch_new_form" %>
+            </div>
+            <div class="search_new_content__element">
+            ＜コード＞<br>
+              <%= c.text_field :code, class: "serch_new_form" %>
+            </div>
           </div>
         </div>
+      <% end %>
+
+      <%= fields_for @document do |d| %>
+        <div class="search_new_content__document">
+          <div class="search_new_content__document--wrapper">
+            <div class="search_new_content__head">
+              納入仕様書情報
+            </div>
+            <div class="search_new_content__element">
+            ＜締結日＞（例 20200101）<br>
+              <%= d.text_field :date, class: "serch_new_form" %>
+            </div>
+            <div class="search_new_content__element">
+            ＜投稿者＞<br>
+              <%= d.text_field :author, class: "serch_new_form" %>
+            </div>
+            <div class="search_new_content__element">
+            ＜PDFファイル＞<br>
+              <%= d.file_field :image, class: "serch_new_form" %>
+            </div>
+            <div class="search_new_content__element">
+            ＜備考＞（任意）<br>
+              <%= d.text_area :note, class: "serch_new_form" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="search_new_content__submit">
+      <br>
+        <%= f.submit "  登録  "%>
       </div>
     <% end %>
-
-    <%= fields_for @document do |d| %>
-      <div class="search_new_content__document">
-        <div class="search_new_content__document--wrapper">
-          <div class="search_new_content__head">
-            納入仕様書情報
-          </div>
-          <div class="search_new_content__element">
-          ＜締結日＞（例 20200101）<br>
-            <%= d.text_field :date, class: "serch_new_form" %>
-          </div>
-          <div class="search_new_content__element">
-          ＜投稿者＞<br>
-            <%= d.text_field :author, class: "serch_new_form" %>
-          </div>
-          <div class="search_new_content__element">
-          ＜PDFファイル＞<br>
-            <%= d.file_field :image, class: "serch_new_form" %>
-          </div>
-          <div class="search_new_content__element">
-          ＜備考＞（任意）<br>
-            <%= d.text_area :note, class: "serch_new_form" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
-    <div class="search_new_content__head">
-    <br>
-      <%= f.submit "  登録  "%>
-    </div>
-  <% end %>
+  </div>
 </div>

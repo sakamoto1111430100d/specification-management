@@ -1,0 +1,11 @@
+.notifications {
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  .notice {
+    background-color: lightBlue;
+  }
+  .alert {
+    background-color: orange;
+  }
+}

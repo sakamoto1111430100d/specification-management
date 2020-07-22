@@ -1,26 +1,25 @@
-<div class="document_edit">
-  <div class="document_edit_head">
-    <div class="document_edit_home">
-      <%= link_to "　ホーム", searches_path, class: "fas fa-home" %>
+<%= render "layouts/header_home" %>
+<%= render "layouts/notifications" %>
+<div>
+  <div class="document_edit_content-name">
+    <div class="document_edit_content-name--content">
+      備考編集
     </div>
-  備考編集
-  </div>
-  <div class="notifications">
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: key) %>
-    <% end %>
   </div>
   <div class="document_edit_content">
-    <div class="document_edit_content__document">
     <%= form_for @document do |f| %>
-      <div class="document_edit_content__element">
-      備考<br>
-        <%= f.text_area :note %>
+      <div class="document_edit_content__document">
+        <div class="document_edit_content__document--wrapper">
+          <div class="document_edit_content__element">
+            ＜備考＞<br>
+              <%= f.text_area :note %>
+          </div>
+          <div class="document_edit_content__input">
+            <br>
+              <%= f.submit "  登録  "%>
+          </div>
+        </div>
       </div>
-      <div>
-      <br>
-        <%= f.submit "  登録  "%>
     <% end %>
-    </div>
   </div>
 </div>

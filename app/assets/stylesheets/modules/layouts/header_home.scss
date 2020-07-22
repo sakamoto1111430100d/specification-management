@@ -1,0 +1,12 @@
+.header_home {
+  height: 80px;
+  border-bottom: solid 1px $color_blue4;
+  background-color: $color_blue5;
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: 18px;
+  padding: 0 30px;
+  &__content {
+  }
+}

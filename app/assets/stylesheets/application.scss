@@ -1,6 +1,9 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "modules/layouts/variables";
+@import "modules/layouts/notifications";
+@import "modules/layouts/header_home";
 @import "modules/search/index";
 @import "modules/search/new";
 @import "modules/company/index";
@@ -10,4 +13,3 @@
 @import "modules/document/show";
 @import "modules/document/edit";
 @import "modules/document/new";
-@import "icon";

@@ -1,68 +1,75 @@
-.wapper {
-  header {
-    height: 45px;
-    border: solid 1px;
+header {
+  height: 80px;
+  border-bottom: solid 1px $color_blue4;
+  background-color: $color_blue5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+main {
+  padding-bottom: $padding_bottom;
+  .search-result-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0 30px;
-    // font-size: 18px;
+    height: 150px;
+    margin: 30px 0;
+    a {
+      text-decoration: none;
+      color: #004E98;
+    }
+    .create-content {
+      background-color: $color_blue5;
+      padding: 15px;
+      width: 380px;
+      height: 130px;
+      border-radius: 7px;
+      text-align: center;
+    }
   }
-  main {
-    margin-bottom: 100px;
-    .search-result-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 150px;
-      margin: 30px 0;
-      #search-result {        
-        text-align: center;
-        width: 350px;
-      }
+  .search-form {
+    margin-bottom: 130px;
+    display: flex;
+    justify-content: center;
+    #keyword {
+      height: 50px;
+      width: 400px;
+      text-align: center;
+      line-height: 100px;
     }
-    .search-form {
-      margin-bottom: 130px;
-      display: flex;
-      justify-content: center;
-      #keyword {
-        height: 50px;
-        width: 400px;
-        text-align: center;
-        line-height: 100px;
-      }
-    }
-    .index {
-      &__list {
-        .list {
-          display: flex;
-          justify-content: center;
-          &__company {
-            width: 30vw ;
-            margin: 0 60px;
-          }
-          &__item {
-            width: 30vw ;
-            margin: 0 60px;
-          }
-          tr {
-            border-bottom: 1px outset #eee;
-          }
-          th {
-            text-align: center;
-            height: 20px;
-            border-top: 2px outset #ccc;
-            border-bottom: 2px outset #ccc;
-            padding: 0 20px;
-          }
-          td {
-            padding: 0 20px;
-            text-align: center;
-            min-height: 80px;
-          }
+  }
+  .index {
+    &__list {
+      .list {
+        display: flex;
+        justify-content: center;
+        &__company {
+          width: 30vw ;
+          margin: 0 60px;
+        }
+        &__item {
+          width: 30vw ;
+          margin: 0 60px;
+        }
+        tr {
+          border-bottom: 1px outset $color_blue2;
+        }
+        th {
+          text-align: center;
+          height: 20px;
+          border-top: 2px outset $color_blue3;
+          border-bottom: 2px outset $color_blue3;
+          padding: 0 20px;
+        }
+        td {
+          padding: 0 20px;
+          text-align: center;
+          min-height: 80px;
         }
       }
     }
   }
 }
+
 

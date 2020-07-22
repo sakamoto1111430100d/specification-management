@@ -1,57 +1,61 @@
-.document-wapper {
-  height: 100vh;
-  position: relative;
-  .document-header {
-    height: 45px;
-    border: solid 1px;
+.document-header {
+  height: 80px;
+  border-bottom: solid 1px $color_blue4;
+  background-color: $color_blue5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  padding: 0 30px;
+}
+.document-main {
+  padding-bottom: $padding_bottom;
+  &__content-name {
+    height: 150px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    font-size: 18px;
-    padding: 0 30px;
-    &__name {}
-    &__home {}
-    &__add {}
+    text-align: center;
+    &--content {
+      font-size: $font_size1;
+    }
   }
-  .document-main {
-    height: calc(100vh - 90);
-    padding: 50px 30px 15px 30px;
-    margin-bottom: 100px;
-    &__index {
-      display: flex;
-      justify-content: center;
-      .document-content {
-        width: 55vw ;
-        tr {
-          border-bottom: 1px outset #eee;
-        }
-        th {
-          text-align: center;
-          height: 20px;
-          border-top: 2px outset #ccc;
-          border-bottom: 2px outset #ccc;
-          padding: 0 20px;
-        }
-        td {
-          padding: 0 20px;
-          text-align: center;
-          min-height: 80px;
-        }
-        td.delete_button {
-          border-bottom: hidden !important;
-          border-radius: 4px;
-        }
-        &__note {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 20px;
-          &--area {
-            max-width: 150px;
-            word-wrap: break-word;
-          }
+  &__index {
+    display: flex;
+    justify-content: center;
+
+    .document-content {
+      width: 55vw ;
+      tr {
+        border-bottom: 1px outset $color_blue2;
+      }
+      th {
+        text-align: center;
+        height: 20px;
+        border-top: 2px outset $color_blue3;
+        border-bottom: 2px outset $color_blue3;
+        padding: 0 20px;
+      }
+      td {
+        padding: 0 20px;
+        text-align: center;
+        min-height: 80px;
+      }
+      td.delete_button {
+        border-bottom: hidden !important;
+        border-radius: 4px;
+      }
+      &__note {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        &--area {
+          max-width: 150px;
+          word-wrap: break-word;
         }
       }
     }
   }
 }
+

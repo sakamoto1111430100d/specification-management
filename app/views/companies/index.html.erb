@@ -1,49 +1,45 @@
-<div class="company-wapper">
-  <div class="company-header">
-    <div >
-      <%= link_to "　ホーム", searches_path, class: "fas fa-home" %>
-    </div>
-    <div >
+<div class="company-header">
+  <div >
+    <%= link_to "　ホーム", searches_path, class: "fas fa-home" %>
+  </div>
+  <div >
+    
+  </div>
+  <div >
+    <%=  link_to "　編集", edit_company_path(id: @company.id), class: "fas fa-edit" %>
+  </div>
+</div>
+<%= render "layouts/notifications" %>
+<div class="company-main">
+  <div class="company-main__name">
+    <div class="company-main__name--content">
       <%= "#{@company.name}　#{@company.office}" %>
     </div>
-    <div >
-      <%=  link_to "　編集", edit_company_path(id: @company.id), class: "fas fa-edit" %>
-    </div>
   </div>
-  <div class="notifications">
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: key) %>
-    <% end %>
-  </div>
-  <div class="company-main">
-    <div class="company-main__index">
-      <div>
+  <div class="company-main__index">
+    <% if @documents.present? %>
+      <table class="company-content">
+        <tr>
+          <th>コード</th>
+          <th>製品名</th>
+          <th>締結日</th>
+          <th>納入仕様書</th>
+        </tr>
+        <% @documents.each do |document| %>
+        <tr>
+          <td><%= link_to "#{document.item.code}", items_path(item_id: document.item.id) %></td>
+          <td><%= link_to "#{document.item.name}", items_path(item_id: document.item.id) %></td>
+          <td><%= "#{document.date}" %></td>
+          <td><%= link_to "", "#{document.image}", class: "far fa-file-alt" %></td>
+          <td class='detail_css'><%= link_to "", documents_path(item_id: document.item.id, company_id: document.company.id), class: "fas fa-angle-double-right" %></td>
+        </tr> 
+        <% end %>
+      </table>
+    <% else %>
+      <div class="company-content__none">
+        該当のデータはありません
       </div>
-      <% if @documents.present? %>
-        <table class="company-content">
-          <tr>
-            <th>コード</th>
-            <th>製品名</th>
-            <th>締結日</th>
-            <th>納入仕様書</th>
-          </tr>
-
-          <% @documents.each do |document| %>
-          <tr>
-            <td><%= link_to "#{document.item.code}", items_path(item_id: document.item.id) %></td>
-            <td><%= link_to "#{document.item.name}", items_path(item_id: document.item.id) %></td>
-            <td><%= "#{document.date}" %></td>
-            <td><%= link_to "", "#{document.image}", class: "far fa-file-alt" %></td>
-            <td class='detail_css'><%= link_to "", documents_path(item_id: document.item.id, company_id: document.company.id), class: "fas fa-angle-double-right" %></td>
-          </tr> 
-          <% end %>
-        </table>
-      <% else %>
-        <div class="company-content__none">
-          該当のデータはありません
-        </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
 

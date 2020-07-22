@@ -1,19 +1,12 @@
-<div class="item-wapper">
-  <div class="item-header">
-    <div class="item-header__home">
-      <%= link_to "　ホーム", searches_path, class: "fas fa-home" %>
-    </div>
-    <div class="item-header__name">
+<%= render "layouts/header_home" %>
+<%= render "layouts/notifications" %>
+<div class="item-main">
+  <div class="item-main__name">
+    <div class="item-main__name--content">
       <%= "#{@item.code}　#{@item.name}" %>
     </div>
   </div>
-  <div class="notifications">
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: key) %>
-    <% end %>
-  </div>
-  <div class="item-main">
-    <div class="item-main__index">
+  <div class="item-main__index">
     <% if @documents.present? %>
       <table class="item-content">
         <tr>
@@ -32,11 +25,10 @@
         </tr>
         <% end %>
       </table>
-      <% else %>
-        <div class="company-content__none">
-          該当のデータはありません
-        </div>
-      <% end %>
-    </div>
+    <% else %>
+      <div class="company-content__none">
+        該当のデータはありません
+      </div>
+    <% end %>
   </div>
 </div>
