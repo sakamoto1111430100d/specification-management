@@ -1,14 +1,14 @@
 <div class="document-wapper">
   <div class="document-header">
     <div class="document-header__home">
-      <%= link_to "", searches_path, class: "fas fa-home" %>
+      <%= link_to "　ホーム", searches_path, class: "fas fa-home" %>
     </div>
     <div class="document-header__name">
       <%= "#{@item.code}　#{@item.name}　　" %>
       <%= "#{@company.name}　#{@company.office}" %>
     </div>
     <div class="document-header__add">
-      <%= link_to "", new_document_path(company_id: @company.id, item_id: @item.id), method: :get, class: 'fas fa-plus'%>
+      <%= link_to "　追加", new_document_path(company_id: @company.id, item_id: @item.id), method: :get, class: 'fas fa-plus'%>
     </div>   
   </div>
   <div class="notifications">
@@ -29,11 +29,13 @@
         <% @documents.each do |document| %>
         <tr>
           <td><%= "#{document.date}" %></td>
-          <td><%= link_to "image", "#{document.image}" %></td>
+          <td><%= link_to "", "#{document.image}", class: "far fa-file-alt" %></td>
           <td><%= "#{document.author}" %></td>
-          <td class="document-content__note"><%= "#{document.note}" %></td>
-          <td class='note_button'><div class='note_button__button'><%= link_to "備考追記", edit_document_path(id: document.id), method: :get %></div></td>
-          <td class='delete_button'><div class='delete_button__button'><%= link_to "削除", document_path(id: document.id, company_id: @company.id, item_id: @item.id), method: :delete, data: { confirm: '削除しますか？' } %></div></td>
+          <td class="document-content__note">
+            <div class="document-content__note--area"><%= "#{document.note}" %></div>
+            <div class="document-content__note--icon"><%= link_to "&nbsp;編集".html_safe, edit_document_path(id: document.id), method: :get, class: "fas fa-edit" %></div>
+          </td>
+          <td class='delete_button'><%= link_to "", document_path(id: document.id, company_id: @company.id, item_id: @item.id), method: :delete, class: "far fa-trash-alt", data: { confirm: '削除しますか？' } %></td>
         </tr>
         <% end %>
       </table>

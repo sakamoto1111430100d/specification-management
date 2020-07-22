@@ -1,11 +1,11 @@
 <div class="wapper">
   <header>
-    <div class="logout">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
-    </div>
-    <div class="add">
-      <%= link_to "", new_search_path, method: :get, class: 'fas fa-plus'%>
+    <div>
+      <%= link_to "　追加", new_search_path, method: :get, class: 'fas fa-plus'%>
     </div>   
+    <div>
+      <%= link_to "　ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt"%>
+    </div>
   </header>
   <main>
     <div class="search-result-content">
@@ -20,29 +20,28 @@
         <div class="list">
           <table class="list__company">
             <tr>
-              <th></th>
               <th>会社名</th>
               <th>事業所</th>
             </tr>
             <% @companyLists.each do |company| %>
             <tr>
-              <td><%= link_to "", companies_path(company_id: company.id), class: "far fa-check-square" %></td>
+              
               <td><%="#{company.name}"%></td>
               <td><%="#{company.office}"%></td>
+              <td class="detail_css"><%= link_to "", companies_path(company_id: company.id), class: "fas fa-angle-double-right" %></td>
             </tr>
             <% end %>
           </table>
           <table class="list__item">
             <tr>
-              <th></th>
               <th>コード</th>
               <th>製品名</th>
             </tr>
             <% @itemLists.each do |item| %>
             <tr>
-              <td><%= link_to "", items_path(item_id: item.id), class: "far fa-check-square" %></td>
               <td><%="#{item.code}"%></td>
               <td><%="#{item.name}"%></td>
+              <td class="detail_css"><%= link_to "", items_path(item_id: item.id), class: "fas fa-angle-double-right" %></td>
             </tr>
             <% end %>
           </table>

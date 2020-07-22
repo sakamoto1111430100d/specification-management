@@ -1,7 +1,7 @@
 <div class="item-wapper">
   <div class="item-header">
     <div class="item-header__home">
-      <%= link_to "", searches_path, class: "fas fa-home" %>
+      <%= link_to "　ホーム", searches_path, class: "fas fa-home" %>
     </div>
     <div class="item-header__name">
       <%= "#{@item.code}　#{@item.name}" %>
@@ -25,10 +25,10 @@
         <% @documents.each do |document| %>
         <tr>
           <td><%= "#{document.date}" %></td>
-          <td><%= link_to "image", "#{document.image}" %></td>
+          <td><%= link_to "", "#{document.image}", class: "far fa-file-alt" %></td>
           <td><%= link_to "#{document.company.name}", companies_path(company_id: document.company.id) %></td>
           <td><%= link_to "#{document.company.office}", companies_path(company_id: document.company.id) %></td>
-          <td class='detail_css'><%= link_to "改訂履歴/詳細", documents_path(item_id: document.item.id, company_id: document.company.id) %></td>
+          <td class='detail_css'><%= link_to "", documents_path(item_id: document.item.id, company_id: document.company.id), class: "fas fa-angle-double-right" %></td>
         </tr>
         <% end %>
       </table>

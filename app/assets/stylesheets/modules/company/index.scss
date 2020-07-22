@@ -7,11 +7,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 30px;
     font-size: 18px;
-    &__home {}
-    &__name {}
-    &__edit {}
   }
   .company-main {
     height: calc(100vh - 90);
@@ -36,9 +33,6 @@
           padding: 0 20px;
           text-align: center;
           height: 80px;
-        }
-        td.detail_css {
-          border-bottom: hidden !important;
         }
       }
     }
