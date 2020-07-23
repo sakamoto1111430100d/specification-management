@@ -1,35 +1,44 @@
-# specification-management DB設計
-## usersテーブル
+# 納入仕様書管理システム
+## 概要
+## 本番環境
+## 制作背景
+## DEMO
+### 工夫した点
+### 使用技術（開発環境）
+### 今後実装したい機能
+
+## DB設計
+### usersテーブル
 |Column|Type|Option|
 |------|----|------|
 |email|string|null: false, unique: true|
 |password|string|null: false|
-### Association
+#### Association
 - has_many :documents
 - has_many :companies, through: :documents
 - has_many :item, through: :documents
 
-## companiesテーブル
+### companiesテーブル
 |Column|Type|Option|
 |------|----|------|
 |name|string|null: false|
 |office|string|
-### Association
+#### Association
 - has_many :documents
 - has_many :user, through: :documents
 - has_many :item, through: :documents
 
-## itemsテーブル
+### itemsテーブル
 |Column|Type|Option|
 |------|----|------|
 |name|string|null: false|
 |code|integer|null: false|
-### Association
+#### Association
 - has_many :documents
 - has_many :user, through: :documents
 - has_many :companies, through: :documents
 
-## documentsテーブル
+### documentsテーブル
 |Column|Type|Option|
 |------|----|------|
 |date|integer|null: false|
@@ -39,7 +48,7 @@
 |user_id|integer|null: false, foreign_key: true|
 |company_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
-### Association
+#### Association
 - belongs_to :user
 - belongs_to :company
 - belongs_to :item
