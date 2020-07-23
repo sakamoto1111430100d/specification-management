@@ -13,6 +13,7 @@
 
 ## 本番環境
 ### URL
+http://54.199.113.217/
 ### テストアカウント
 email：test@test.test<br>
 password：testtest
