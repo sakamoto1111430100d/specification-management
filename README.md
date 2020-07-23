@@ -27,8 +27,8 @@ password：testtest
 テーブル間のリレーションが、documentsテーブル（納入仕様書）に対してusersテーブル、companiesテーブル（会社情報）、itemsテーブル（製品情報）が多対一になっています。そのため、納入仕様書登録画面ではデータの保存に苦労し、同時に登録できるよう工夫しました。
 見た目についてはまだまだですが、直感的に調べられるよう、できるだけシンプルにしました。
 ### 使用技術（開発環境）
-Ruby on Rails
-javascript(jquery)
+Ruby on Rails<br>
+javascript(jquery)<br>
 AWS
 ### 今後実装したい機能
 納入仕様書管理だけではなく、作成するシステムまで広げたいです。
