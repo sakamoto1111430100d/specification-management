@@ -68,8 +68,6 @@ ja:
       new:
         sign_up: "アカウント登録"
     sessions:
-      user:
-        sign_in: "ログイン"
       new:
         sign_in: "ログイン"
     shared:
