@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200721092053) do
+ActiveRecord::Schema.define(version: 20200723032617) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20200721092053) do
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
-    t.integer  "code",       null: false
+    t.string   "code",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "code"], name: "index_items_on_name_and_code", using: :btree
