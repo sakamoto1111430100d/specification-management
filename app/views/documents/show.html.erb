@@ -23,14 +23,17 @@
         <th>投稿者</th>
         <th>備考</th>
       </tr>
-      <% @documents.each do |document| %>
+      <% @documents.each_with_index do |document, i| %>
       <tr>
         <td><%= "#{document.date}" %></td>
         <td><%= link_to "", "#{document.image}", class: "far fa-file-alt" %></td>
         <td><%= "#{document.author}" %></td>
-        <td class="document-content__note">
+        <td class="document-content__note" data=<%= "#{document.id}" %>>
           <div class="document-content__note--area"><%= "#{document.note}" %></div>
-          <div class="document-content__note--icon"><%= link_to "&nbsp;編集".html_safe, edit_document_path(id: document.id), method: :get, class: "fas fa-edit" %></div>
+          <div class="document-content__note--icon" data=<%= "#{document.id}" %>>
+            <i class="fas fa-edit"></i>
+            &nbsp;編集
+          </div>
         </td>
         <td class='delete_button'><%= link_to "", document_path(id: document.id, company_id: @company.id, item_id: @item.id), method: :delete, class: "far fa-trash-alt", data: { confirm: '削除しますか？' } %></td>
       </tr>

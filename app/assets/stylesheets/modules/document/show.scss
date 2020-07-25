@@ -23,7 +23,6 @@
   &__index {
     display: flex;
     justify-content: center;
-
     .document-content {
       width: 55vw ;
       tr {
@@ -51,11 +50,35 @@
         justify-content: space-between;
         padding: 0 20px;
         &--area {
-          max-width: 150px;
+          max-width: 350px;
           word-wrap: break-word;
+          white-space: pre-wrap;
+          text-align: left;
+          margin: 10px 0;
+        }
+        &--icon {
+          width: 65px;
+          margin-left: 15px;
+          color: #004E98;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.7;
+          }
         }
       }
     }
   }
 }
-
+.document_edit_content {
+  border-radius: 4px;
+  background-color: $color_blue5;
+  margin: 20px 0;
+  width: 350px;
+}
+#document_edit_content {
+  margin: 15px;
+}
+#document_edit__form {
+  width: 100%;
+  height: 100px;
+}

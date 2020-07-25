@@ -5,15 +5,21 @@
   <div >
     
   </div>
-  <div >
-    <%=  link_to "　編集", edit_company_path(id: @company.id), class: "fas fa-edit" %>
-  </div>
+
 </div>
 <%= render "layouts/notifications" %>
 <div class="company-main">
   <div class="company-main__name">
-    <div class="company-main__name--content">
-      <%= "#{@company.name}　#{@company.office}" %>
+    <div class="company-main__name--wrapper">
+      <div class="company-main__name--content">
+        <%= "#{@company.name}　#{@company.office}" %>
+      </div>
+        <%= form_for @company do |f| %>
+        <div class="company-main__name--edit" data=<%= "#{@company.id}" %> >
+          <i class="fas fa-edit"></i>
+          &nbsp;編集
+        </div>
+        <% end %>
     </div>
   </div>
   <div class="company-main__index">

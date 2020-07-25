@@ -6,21 +6,22 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @company = Company.find(params[:id])
-  end
-
-  def update
     company = Company.find(params[:id])
-    if company.update(company_params)
+    company.name = params[:name]
+    company.office = params[:office]
+    if company.save
       redirect_to companies_path(company_id: params[:company_id])
     else
-      redirect_to action: :edit
+      redirect_to companies_path(company_id: params[:company_id])
       flash[:alert] = '登録内容が間違っています'
     end
   end
 
-  private
-  def company_params
-    params.require(:company).permit(:name, :office)
+  def edit_form
+    @company = Company.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @company }
+    end
   end
+
 end

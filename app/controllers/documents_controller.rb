@@ -3,7 +3,7 @@ class DocumentsController < ApplicationController
   def show
     @item = Item.find(params[:item_id])
     @company = Company.find(params[:company_id])
-    @documents = Document.where(item_id: params[:item_id]).where(company_id: params[:company_id]).order("documents.date ASC")
+    @documents = Document.where(item_id: params[:item_id]).where(company_id: params[:company_id]).order("documents.date DESC")
   end
   
   def destroy
@@ -13,15 +13,20 @@ class DocumentsController < ApplicationController
   end
 
   def edit
-    @document = Document.find(params[:id])
+    document = Document.find(params[:id])
+    document.note = params[:note]
+    if document.save
+      redirect_to documents_path(item_id: params[:item_id], company_id: params[:company_id])
+    else
+      redirect_to documents_path(item_id: params[:item_id], company_id: params[:company_id])
+      flash[:alert] = '登録内容が間違っています'
+    end
   end
 
-  def update
-    document = Document.find(params[:id])
-    if document.update(document_edit_params)
-      redirect_to documents_path(company_id: document.company_id, item_id: document.item_id)
-    else
-      render :edit
+  def edit_form
+    @document = Document.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @document }
     end
   end
 
@@ -40,10 +45,6 @@ class DocumentsController < ApplicationController
   end
 
   private
-
-  def document_edit_params
-    params.require(:document).permit(:note)
-  end
 
   def document_new_params
     params.require(:document).permit(:date, :author, :image, :note, :item_id, :company_id).merge(user_id: current_user.id)

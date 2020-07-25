@@ -45,12 +45,12 @@ main {
         display: flex;
         justify-content: center;
         &__company {
-          width: 30vw ;
-          margin: 0 60px;
+          width: 35vw ;
+          margin: 0 40px;
         }
         &__item {
-          width: 30vw ;
-          margin: 0 60px;
+          width: 35vw ;
+          margin: 0 40px;
         }
         tr {
           border-bottom: 1px outset $color_blue2;
