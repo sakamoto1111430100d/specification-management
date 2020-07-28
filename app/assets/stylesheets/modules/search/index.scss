@@ -6,6 +6,34 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;
+  position: relative;
+}
+.header_icon__wrapper {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: end;
+}
+.header__add_icon {
+  margin: 3px 0;
+}
+.header__bars_icon {
+  margin: 3px 0;
+}
+.individual_area {
+  position: absolute;
+  right: 120px;
+  width: 100px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &__element {
+    text-align: end;
+    margin: 3px 0;
+    font-size: 14px;
+  }
 }
 main {
   padding-bottom: $padding_bottom;
@@ -15,6 +43,7 @@ main {
     align-items: center;
     height: 150px;
     margin: 30px 0;
+    position: relative;
     a {
       text-decoration: none;
       color: #004E98;
@@ -27,11 +56,43 @@ main {
       border-radius: 7px;
       text-align: center;
     }
+    .menue-content__wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 0 10px;
+    }
+    .menue-content {
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      right: 5px;
+      &__element {
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+        border-radius: 4px;
+        background-color: rgb(255, 248, 172);
+        color: rgb(255, 153, 0);
+        cursor: pointer;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+      #menue-content__element {
+        color: rgb(255, 153, 0);
+        display: block;
+      }
+    }
   }
   .search-form {
     margin-bottom: 130px;
     display: flex;
     justify-content: center;
+    &__wrapper {
+      position: relative;
+    }
     #keyword {
       height: 50px;
       width: 400px;
@@ -39,6 +100,33 @@ main {
       line-height: 100px;
     }
   }
+  .individual_edit_form {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    padding: 0 10px;
+    .individual_edit_form__content {
+      padding: 10px;
+      height: 100%;
+      background-color: $color_blue5;
+      border-radius: 7px;
+      .individual_edit {
+        &__element {
+          margin: 5px 0;
+        }
+        &__submit {
+          text-align: center;
+          margin: 5px 0;
+
+        }
+        &__form {
+          width: 100%;
+        }
+      }
+
+    }
+  }
+
   .index {
     &__list {
       .list {
@@ -71,5 +159,4 @@ main {
     }
   }
 }
-
 

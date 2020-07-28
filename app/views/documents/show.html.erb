@@ -1,9 +1,9 @@
 <div class="document-header">
   <div>
-    <%= link_to "　ホーム", searches_path, class: "fas fa-home" %>
+    <%= link_to "　ホーム", individual_searches_path, class: "fas fa-home" %>
   </div>
   <div>
-    <%= link_to "　追加", new_document_path(company_id: @company.id, item_id: @item.id), method: :get, class: 'fas fa-plus'%>
+    <%= link_to "　追加", new_individual_document_path(company_id: @company.id, item_id: @item.id), method: :get, class: 'fas fa-plus'%>
   </div>   
 </div>
 <%= render "layouts/notifications" %>
@@ -18,24 +18,37 @@
   <% if @documents.present? %>
     <table class="document-content">
       <tr>
+        <th class="stock_btn_th"></th>
         <th>締結日</th>
         <th>納入仕様書</th>
+        <th>部署</th>
         <th>投稿者</th>
         <th>備考</th>
       </tr>
       <% @documents.each_with_index do |document, i| %>
       <tr>
+        <td class="stock_btn" document_id=<%= "#{document.id}" %> individual_id=<%= "#{@individual.id}" %> >
+        <% unless (document.stocks.ids & @individual.stocks.ids).empty?%>
+          <div class="stocked_icon">
+          <i class="fas fa-bookmark">&nbsp;済み</i>
+          </div>
+        <% else %>
+          <div class="none_stock_icon">
+          <i class="fas fa-bookmark">&nbsp;保存</i>
+          </div>
+        <% end %>
+        </td>
         <td><%= "#{document.date}" %></td>
         <td><%= link_to "", "#{document.image}", class: "far fa-file-alt" %></td>
+        <td><%= "#{document.department}" %></td>
         <td><%= "#{document.author}" %></td>
         <td class="document-content__note" data=<%= "#{document.id}" %>>
           <div class="document-content__note--area"><%= "#{document.note}" %></div>
           <div class="document-content__note--icon" data=<%= "#{document.id}" %>>
-            <i class="fas fa-edit"></i>
-            &nbsp;編集
+            <i class="fas fa-edit">&nbsp;編集</i>
           </div>
         </td>
-        <td class='delete_button'><%= link_to "", document_path(id: document.id, company_id: @company.id, item_id: @item.id), method: :delete, class: "far fa-trash-alt", data: { confirm: '削除しますか？' } %></td>
+        <td class='delete_button'><%= link_to "", individual_document_path(id: document.id, company_id: @company.id, item_id: @item.id), method: :delete, class: "far fa-trash-alt", data: { confirm: '削除しますか？' } %></td>
       </tr>
       <% end %>
     </table>

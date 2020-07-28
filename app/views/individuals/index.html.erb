@@ -1,0 +1,55 @@
+<div class="individual-lheader_home">
+  <div class="individual-lheader_home__content">
+    <%= link_to "　ホーム", individual_searches_path, class: "fas fa-home" %>
+  </div>
+  <div class="individual-lheader_home__individual_area">
+    <div class="individual-lheader_home__individual_area__element">
+      <%= @individual.department %>
+    </div>
+    <div class="individual-lheader_home__individual_area__element">
+      <%= @individual.name %>
+    </div>
+  </div>
+</div>
+<div class="individual-main">
+  <div class="individual-main__name">
+    <% if @params_id == "1"%>
+    <div class="individual-main__name--content">
+    登録したものリスト
+    </div>
+    <% else %>
+    <div class="individual-main__name--content">
+    保管したものリスト
+    </div>
+    <% end %>
+  </div>
+  <div class="individual-main__index">
+    <% if @documents.present? %>
+      <table class="individual-content">
+        <tr>
+          <th>締結日</th>
+          <th>納入仕様書</th>
+          <th>会社名</th>
+          <th>事業所</th>
+          <th>コード</th>
+          <th>製品名</th>
+        </tr>
+        <% @documents.each do |document| %>
+        <tr>
+          <td><%= "#{document.date}" %></td>
+          <td><%= link_to "", "#{document.image}", class: "far fa-file-alt" %></td>
+          <td><%= link_to "#{document.company.name}", individual_items_path(company_id: document.company.id) %></td>
+          <td><%= link_to "#{document.company.office}", individual_items_path(company_id: document.company.id) %></td>
+          <td><%= link_to "#{document.item.code}", individual_items_path(item_id: document.item.id) %></td>
+          <td><%= link_to "#{document.item.name}", individual_items_path(item_id: document.item.id) %></td>
+          <td class='detail_css'><%= link_to "", individual_documents_path(item_id: document.item.id, company_id: document.company.id), class: "fas fa-angle-double-right" %></td>
+        </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <div class="company-content__none">
+        該当のデータはありません
+      </div>
+    <% end %>
+  </div>
+</div>

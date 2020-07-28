@@ -10,9 +10,9 @@ class CompaniesController < ApplicationController
     company.name = params[:name]
     company.office = params[:office]
     if company.save
-      redirect_to companies_path(company_id: params[:company_id])
+      redirect_to individual_companies_path(company_id: params[:company_id])
     else
-      redirect_to companies_path(company_id: params[:company_id])
+      redirect_to individual_companies_path(company_id: params[:company_id])
       flash[:alert] = '登録内容が間違っています'
     end
   end

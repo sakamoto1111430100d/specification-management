@@ -1,0 +1,43 @@
+<div class="individual_header">
+  <div>
+    <%= link_to "　ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt"%>
+  </div>
+  <div class="individual_header__content">
+    <%= link_to "　ユーザー選択", new_sessions_path, class: "fas fa-users " %>
+  </div>
+</div>
+<div class="individual_new__wrapper">
+<%= form_for @individual do |f| %>
+  <div class="individual_new">
+    <div class="individual_new__element">
+    <%= f.label :メールアドレス（必須） %><br />
+    <%= f.email_field :email, autofocus: true, required: true, class: "individual_new__form" %>
+    </div>
+
+    <div class="individual_new__element">
+    <%= f.label :会社名 %><br />
+    <%= f.text_field :company, value: "", class: "individual_new__form" %>
+    </div>
+
+    <div class="individual_new__element">
+    <%= f.label :事業所名 %><br />
+    <%= f.text_field :office, value: "", class: "individual_new__form" %>
+    </div>
+
+    <div class="individual_new__element">
+    <%= f.label :部署名 %><br />
+    <%= f.text_field :department, value: "", class: "individual_new__form" %>
+    </div>
+
+    <div class="individual_new__element">
+    <%= f.label :氏名（必須） %><br />
+    <%= f.text_field :name, required: true, class: "individual_new__form" %>
+    </div>
+
+    <div class="individual_new__submit">
+    <%= f.submit "ユーザー追加" %>
+    </div>
+
+  </div>
+<% end %>
+</div>

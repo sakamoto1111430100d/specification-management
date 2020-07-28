@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :documents, foreign_key: 'user_id'
   has_many :companies, through: :documents
   has_many :items, through: :documents
+  has_many :individuals
 
   validates :email, presence: true
   validates :password, presence: true
