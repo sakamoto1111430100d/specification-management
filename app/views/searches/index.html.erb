@@ -1,19 +1,43 @@
 <header>
-  <div>
-    <%= link_to "　ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt"%>
+  <div header__bars_icon>
+    <%= link_to "　ユーザー選択", sessions_path, method: :delete, class: "fas fa-users"%>
   </div>
-  <div>
-    <%= link_to "　追加", new_search_path, method: :get, class: 'fas fa-plus'%>
-  </div>   
+
+
+  <div class="individual_area">
+    <div class="individual_area__element">
+      <%= @individual.department %>
+    </div>
+    <div class="individual_area__element">
+      <%= @individual.name %>
+    </div>
+  </div>
+  
+  <div class="header_icon__wrapper">
+    <div class="header__add_icon">
+      <%= link_to "　追加", new_individual_search_path, method: :get, class: 'fas fa-plus'%>
+    </div>
+    <div class="header__bars_icon" data=<%= "#{@individual.id}" %> >
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+
 </header>
 <%= render "layouts/notifications" %>
 <main>
   <div class="search-result-content">
     <div id="search-result">
     </div>
+    <div class="menue-content">
+    </div>
   </div>
-  <div class="search-form">
-    <%= text_field_tag :keyword, "", placeholder: "会社名 or 製品名", class: "search-input" %>
+  <div class="search-form__wrapper">
+
+    <div class="search-form">
+      <%= text_field_tag :keyword, "", placeholder: "会社名 or 製品名", class: "search-input" %>
+    </div>
+    <div class="individual_edit_form">
+    </div>
   </div>
   <div class="index">
     <div class="index__list">
@@ -28,7 +52,7 @@
             
             <td><%="#{company.name}"%></td>
             <td><%="#{company.office}"%></td>
-            <td class="detail_css"><%= link_to "", companies_path(company_id: company.id), class: "fas fa-angle-double-right" %></td>
+            <td class="detail_css"><%= link_to "", individual_companies_path(company_id: company.id), class: "fas fa-angle-double-right" %></td>
           </tr>
           <% end %>
         </table>
@@ -41,7 +65,7 @@
           <tr>
             <td><%="#{item.code}"%></td>
             <td><%="#{item.name}"%></td>
-            <td class="detail_css"><%= link_to "", items_path(item_id: item.id), class: "fas fa-angle-double-right" %></td>
+            <td class="detail_css"><%= link_to "", individual_items_path(item_id: item.id), class: "fas fa-angle-double-right" %></td>
           </tr>
           <% end %>
         </table>

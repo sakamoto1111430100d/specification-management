@@ -1,21 +1,32 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'searches#index'
-  resources :companies, only: [:index, :edit, :update] do
+
+  resources :individuals, only: [:new, :create, :edit, :index] do
     collection do
       get 'edit_form'
     end
-  end
-  resources :items, only: [:index]
-  resources :documents, only: [:destroy, :edit, :update, :new, :create] do
-    collection do
-      get 'edit_form'
+    resources :companies, only: [:index, :edit, :update] do
+      collection do
+        get 'edit_form'
+      end
+    end
+    resources :items, only: [:index]
+    resource :documents, only: [:show]
+    resources :documents, only: [:destroy, :edit, :update, :new, :create] do
+      collection do
+        get 'edit_form'
+      end
+    end
+    resources :searches, only: [:index, :new, :create] do
+      collection do
+        get 'search', 'menue_list'
+      end
     end
   end
-  resource :documents, only: [:show]
-  resources :searches, only: [:index, :new, :create] do
+  resource :sessions, only: [:new, :destroy]  do
     collection do
-      get 'search'
+      get 'select'
     end
   end
 end

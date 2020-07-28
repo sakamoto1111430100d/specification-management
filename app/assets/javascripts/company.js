@@ -1,11 +1,12 @@
 $(function() {
 
   function companyEditForm(company) {
+    var individual_id = location.pathname.replace("/companies", "");
     var html =
     `
     <div class="company_edit_content-name">
       <div class="edit_company">
-        <form action="/companies/${company.id}/edit" method="get">
+        <form action="${individual_id}/companies/${company.id}/edit" method="get">
           <div class="company_edit_content__company">
             <div class="company_edit_content__company--wrapper">
               <div class="company_edit_content__element">
@@ -29,9 +30,12 @@ $(function() {
   }
   $(".company-main__name--edit").on("click", function() {
     var id = $(this).attr('data');
+    var pathname = location.pathname.replace("/companies", "");
+    var path = pathname + "/companies/edit_form"
+
     $.ajax({
       type: 'get',
-      url: "/companies/edit_form",
+      url: path,
       data: {id: id},
       dataType: 'json'
     })

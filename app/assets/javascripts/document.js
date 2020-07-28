@@ -1,10 +1,11 @@
 $(function() {
 
   function documentEditForm(document) {
+    var individual_id = location.pathname.replace("/documents", "");
     var html =
     `
     <div class="document_edit_content">
-      <form action="/documents/${document.id}/edit" method="get" id="document_edit_content">
+      <form action="${individual_id}/documents/${document.id}/edit" method="get" id="document_edit_content">
         <div>
           <textarea name="note" id="document_edit__form" >${document.note}</textarea>
           <input type="hidden" name="item_id" value="${document.item_id}">
@@ -21,10 +22,15 @@ $(function() {
 
   $(".document-content__note--icon").on("click", function() {
     var id = $(this).attr('data');
+    var pathname = location.pathname
+    var path = pathname + "/edit_form"
+    console.log(path);
+    console.log(id);
+
     $(".document-content__note[data=" + id + "]").empty();
     $.ajax( {
       type: 'get',
-      url: "/documents/edit_form",
+      url: path,
       data: {id: id},
       dataType: 'json'
     })

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200723032617) do
+ActiveRecord::Schema.define(version: 20200728025046) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -21,18 +21,32 @@ ActiveRecord::Schema.define(version: 20200723032617) do
   end
 
   create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "date",                     null: false
-    t.string   "author",                   null: false
-    t.string   "image",                    null: false
+    t.integer  "date",                        null: false
+    t.string   "author",                      null: false
+    t.string   "image",                       null: false
     t.integer  "company_id"
     t.integer  "item_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "user_id"
-    t.text     "note",       limit: 65535
+    t.text     "note",          limit: 65535
+    t.string   "office"
+    t.integer  "individual_id"
     t.index ["company_id"], name: "index_documents_on_company_id", using: :btree
     t.index ["item_id"], name: "index_documents_on_item_id", using: :btree
     t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
+  end
+
+  create_table "individuals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "email",      null: false
+    t.string   "company"
+    t.string   "office"
+    t.string   "department"
+    t.string   "name",       null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_individuals_on_user_id", using: :btree
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -58,4 +72,5 @@ ActiveRecord::Schema.define(version: 20200723032617) do
   add_foreign_key "documents", "companies"
   add_foreign_key "documents", "items"
   add_foreign_key "documents", "users"
+  add_foreign_key "individuals", "users"
 end

@@ -6,13 +6,16 @@ $color_blue3: rgba(92, 129, 163, 0.5);
 $color_blue4: rgba(92, 129, 163, 0.8);
 $color_blue5: #ecf7fc;
 
-
-a.fas.fa-plus {
+@mixin icon($font-size) {
   color: #004E98;
-  font-size: 14px;
+  font-size: $font-size;
   &:hover {
     opacity: 0.7;
   }
+}
+
+a.fas.fa-plus {
+  @include icon(14px)
 }
 a.fas.fa-sign-out-alt {
   color: #004E98;
@@ -24,32 +27,18 @@ a.fas.fa-sign-out-alt {
   }
 }
 a.fas.fa-home {
-  color: #004E98;
-  font-size: 14px;
-  &:hover {
-    opacity: 0.7;
-  }
+  @include icon(14px)
 }
 a.fas.fa-edit {
-  color: #004E98;
-  font-size: 14px;
-  &:hover {
-    opacity: 0.7;
-  }
+  @include icon(14px)
 }
 a.far.fa-trash-alt {
-  color: #004E98;
-  font-size: 20px;
-  &:hover {
-    opacity: 0.7;
-  }
+  @include icon(20px)
+
 }
 a.far.fa-file-alt{
-  color: #004E98;
-  font-size: 20px;
-  &:hover {
-    opacity: 0.7;
-  }
+  @include icon(20px)
+
 }
 a.fas.fa-angle-double-right {
   font-size: 25px;
@@ -59,6 +48,21 @@ a.fas.fa-angle-double-right {
   &:hover {
     opacity: 0.7;
   }
+}
+.fas.fa-bars {
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+  padding: 5px;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+a.fas.fa-user-plus {
+  @include icon(14px)
+}
+a.fas.fa-users {
+  @include icon(14px)
 }
 a {
   text-decoration: none;

@@ -9,16 +9,16 @@ class DocumentsController < ApplicationController
   def destroy
     document = Document.find(params[:id])
     document.destroy
-    redirect_to documents_path(item_id: params[:item_id], company_id: params[:company_id])
+    redirect_to individual_documents_path(item_id: params[:item_id], company_id: params[:company_id])
   end
 
   def edit
     document = Document.find(params[:id])
     document.note = params[:note]
     if document.save
-      redirect_to documents_path(item_id: params[:item_id], company_id: params[:company_id])
+      redirect_to individual_documents_path(item_id: params[:item_id], company_id: params[:company_id])
     else
-      redirect_to documents_path(item_id: params[:item_id], company_id: params[:company_id])
+      redirect_to individual_documents_path(item_id: params[:item_id], company_id: params[:company_id])
       flash[:alert] = '登録内容が間違っています'
     end
   end
@@ -37,9 +37,9 @@ class DocumentsController < ApplicationController
   def create
     document = Document.new(document_new_params)
     if document.save
-      redirect_to documents_path(company_id: document.company_id, item_id: document.item_id)
+      redirect_to individual_documents_path(company_id: document.company_id, item_id: document.item_id)
     else
-      redirect_to new_document_path(company_id: params[:company_id], item_id: params[:item_id])
+      redirect_to new_individual_document_path(company_id: params[:company_id], item_id: params[:item_id])
       flash[:alert] = '登録内容が誤っています'
     end
   end

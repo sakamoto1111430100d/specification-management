@@ -1,12 +1,4 @@
-<div class="company-header">
-  <div >
-    <%= link_to "　ホーム", searches_path, class: "fas fa-home" %>
-  </div>
-  <div >
-    
-  </div>
-
-</div>
+<%= render "layouts/header_home" %>
 <%= render "layouts/notifications" %>
 <div class="company-main">
   <div class="company-main__name">
@@ -14,12 +6,10 @@
       <div class="company-main__name--content">
         <%= "#{@company.name}　#{@company.office}" %>
       </div>
-        <%= form_for @company do |f| %>
         <div class="company-main__name--edit" data=<%= "#{@company.id}" %> >
           <i class="fas fa-edit"></i>
           &nbsp;編集
         </div>
-        <% end %>
     </div>
   </div>
   <div class="company-main__index">
@@ -33,11 +23,11 @@
         </tr>
         <% @documents.each do |document| %>
         <tr>
-          <td><%= link_to "#{document.item.code}", items_path(item_id: document.item.id) %></td>
-          <td><%= link_to "#{document.item.name}", items_path(item_id: document.item.id) %></td>
+          <td><%= link_to "#{document.item.code}", individual_items_path(item_id: document.item.id) %></td>
+          <td><%= link_to "#{document.item.name}", individual_items_path(item_id: document.item.id) %></td>
           <td><%= "#{document.date}" %></td>
           <td><%= link_to "", "#{document.image}", class: "far fa-file-alt" %></td>
-          <td class='detail_css'><%= link_to "", documents_path(item_id: document.item.id, company_id: document.company.id), class: "fas fa-angle-double-right" %></td>
+          <td class='detail_css'><%= link_to "", individual_documents_path(item_id: document.item.id, company_id: document.company.id), class: "fas fa-angle-double-right" %></td>
         </tr> 
         <% end %>
       </table>

@@ -1,0 +1,20 @@
+<div class="session_header">
+  <div>
+    <%= link_to "　ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt"%>
+  </div>
+  <div class="session_header__content">
+    <%= link_to "　ユーザー追加", new_individual_path, class: "fas fa-user-plus" %>
+  </div>
+</div>
+<div class="session_new__wrapper">
+<%= form_for :individual, url: select_sessions_path, method: 'get' do |f| %>
+  <div class="session_new">
+    <div class="session_new__element">
+    <%= f.collection_select :email, @individuals, :email, :name, :prompt => "ユーザーを選択" %>
+    </div>
+    <div class="session_new__submit">
+    <%= f.submit '選択' %>
+    </div>
+  </div>
+<% end %>
+</div>

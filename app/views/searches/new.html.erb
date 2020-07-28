@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="search_new_content">
-    <%= form_for @company, html: { multipart: true }, url: searches_path do |f| %>
+    <%= form_for @company, url: individual_searches_path, html: { multipart: true } do |f| %>
       <div class="search_new_content__company">
         <div class="search_new_content__company--wrapper">
           <div class="search_new_content__head">
@@ -52,9 +52,6 @@
               <%= d.text_field :date, class: "serch_new_form", required: true %>
             </div>
             <div class="search_new_content__element">
-            ＜投稿者＞<br>
-              <%= d.text_field :author, class: "serch_new_form", required: true %>
-            </div>
             <div class="search_new_content__element">
             ＜PDFファイル＞<br>
               <%= d.file_field :image, class: "serch_new_form", required: true %>
@@ -63,14 +60,16 @@
             ＜備考＞（任意）<br>
               <%= d.text_area :note, class: "serch_new_form" %>
             </div>
+              <%= d.hidden_field :individual_id, :value => @individual.id %>
+              <%= d.hidden_field :author, :value => @individual.name %>
+              <%= d.hidden_field :office, :value => @individual.office %>
+          </div>
+          <div class="search_new_content__submit">
+          <br>
+            <%= f.submit "  登録  "%>
           </div>
         </div>
       <% end %>
-
-      <div class="search_new_content__submit">
-      <br>
-        <%= f.submit "  登録  "%>
-      </div>
     <% end %>
   </div>
 </div>

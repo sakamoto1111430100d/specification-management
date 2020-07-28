@@ -1,16 +1,24 @@
 class SearchesController < ApplicationController
   include SearchesHelper
+  # before_action :default_url_options
+
+  # def default_url_options
+  #   { individual_id: @current_individual.id }
+  # end
+  
 
   def index
     @companies = []
     @companyLists = Company.includes(:users).where(users: {id: current_user}).order("companies.updated_at DESC")
     @itemLists = Item.includes(:users).where(users: {id: current_user}).order("items.updated_at DESC")
+    @individual = Individual.find(params[:individual_id])
   end
 
   def new
     @company = Company.new
     @item = Item.new
     @document = Document.new
+    @individual = Individual.find(params[:individual_id])
   end
 
   def create
@@ -100,6 +108,13 @@ class SearchesController < ApplicationController
     end
   end
 
+  def menue_list
+    @individual = Individual.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @individual }
+    end
+  end
+
 
   private
 
@@ -112,7 +127,7 @@ class SearchesController < ApplicationController
   end
 
   def document_params
-    params.require(:document).permit(:date, :author, :image, :note).merge(company_id: @company_id, item_id: @item_id, user_id: current_user.id)
+    params.require(:document).permit(:date, :author, :image, :note, :individual_id, :office).merge(company_id: @company_id, item_id: @item_id, user_id: current_user.id)
   end
 
 end
