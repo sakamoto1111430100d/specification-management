@@ -1,4 +1,4 @@
-# 納入仕様書管理アプリ
+  # 納入仕様書管理アプリ
 ## 概要
 ### 納入仕様書とは
 製品を製造、販売する際に、納入側(製造側)が購入側(顧客)に提出する文書の一つです。記載内容は多岐にわたり、例えば「製品仕様、納期、運用方法、取引先情報」などがあります。両社が納得のいく合意点を見つけながら作成が行われます。
@@ -52,6 +52,7 @@ AWS
 - has_many :documents
 - has_many :companies, through: :documents
 - has_many :item, through: :documents
+- has_many :individuals
 
 ### companiesテーブル
 |Column|Type|Option|
@@ -78,13 +79,38 @@ AWS
 |------|----|------|
 |date|integer|null: false|
 |author|string|null: false|
+|department|string|
 |image|string|null: false|
 |note|text|
 |user_id|integer|null: false, foreign_key: true|
 |company_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
+|individual_id|integer|
 #### Association
 - belongs_to :user
 - belongs_to :company
 - belongs_to :item
+- has_many :stocks
 
+### individualsテーブル
+|Column|Type|Option|
+|------|----|------|
+|email|string|null: false|
+|company|string|
+|office|string|
+|department|string|
+|name|string|null: false|
+|user_id|integer|foreign_key: true|
+#### Association
+- belongs_to :user
+- has_many :stocks
+
+
+### stokesテーブル
+|Column|Type|Option|
+|------|----|------|
+|document_id|integer|integer|foreign_key: true|
+|individual_id|integer|foreign_key: true|
+#### Association
+- has_many :documents
+- has_many :individuals
