@@ -7,6 +7,7 @@ class IndividualsController < ApplicationController
     if params[:id] == "1"
       @documents = Document.where(individual_id: params[:individual_id])
     else
+      @documents = Document.includes(:stocks).where(stocks: {individual_id: params[:individual_id]})
     end
     
   end

@@ -70,3 +70,10 @@ a {
 td.detail_css {
   border-bottom: hidden !important;
 }
+i.fas.fa-bookmark {
+
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+}

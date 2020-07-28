@@ -11,7 +11,11 @@ class SearchesController < ApplicationController
     @companies = []
     @companyLists = Company.includes(:users).where(users: {id: current_user}).order("companies.updated_at DESC")
     @itemLists = Item.includes(:users).where(users: {id: current_user}).order("items.updated_at DESC")
-    @individual = Individual.find(params[:individual_id])
+    if @current_individual
+      @individual = Individual.find(@current_individual.id)
+    else
+      @individual = Individual.find(params[:individual_id])
+    end
   end
 
   def new

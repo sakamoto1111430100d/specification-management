@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200728025046) do
+ActiveRecord::Schema.define(version: 20200728114616) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20200728025046) do
     t.datetime "updated_at",                  null: false
     t.integer  "user_id"
     t.text     "note",          limit: 65535
-    t.string   "office"
+    t.string   "department"
     t.integer  "individual_id"
     t.index ["company_id"], name: "index_documents_on_company_id", using: :btree
     t.index ["item_id"], name: "index_documents_on_item_id", using: :btree
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 20200728025046) do
     t.index ["name", "code"], name: "index_items_on_name_and_code", using: :btree
   end
 
+  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "document_id"
+    t.integer  "individual_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["document_id"], name: "index_stocks_on_document_id", using: :btree
+    t.index ["individual_id"], name: "index_stocks_on_individual_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -73,4 +82,6 @@ ActiveRecord::Schema.define(version: 20200728025046) do
   add_foreign_key "documents", "items"
   add_foreign_key "documents", "users"
   add_foreign_key "individuals", "users"
+  add_foreign_key "stocks", "documents"
+  add_foreign_key "stocks", "individuals"
 end

@@ -4,6 +4,7 @@ class DocumentsController < ApplicationController
     @item = Item.find(params[:item_id])
     @company = Company.find(params[:company_id])
     @documents = Document.where(item_id: params[:item_id]).where(company_id: params[:company_id]).order("documents.date DESC")
+    @individual = Individual.find(params[:individual_id])
   end
   
   def destroy

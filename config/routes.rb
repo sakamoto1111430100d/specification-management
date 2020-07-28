@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get 'select'
     end
   end
+  resource :stocks, only: [:create, :destroy]
 end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
