@@ -19,7 +19,7 @@
           </div>
           <div class="search_new_content__element">
           ＜事業所＞（任意）<br>
-            <%= f.text_field :office, class: "serch_new_form" %>
+            <%= f.text_field :office, value: "", class: "serch_new_form" %>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
             </div>
             <div class="search_new_content__element">
             ＜備考＞（任意）<br>
-              <%= d.text_area :note, class: "serch_new_form" %>
+              <%= d.text_area :note, value: "", class: "serch_new_form" %>
             </div>
               <%= d.hidden_field :individual_id, :value => @individual.id %>
               <%= d.hidden_field :author, :value => @individual.name %>

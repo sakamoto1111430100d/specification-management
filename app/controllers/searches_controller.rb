@@ -124,7 +124,7 @@ class SearchesController < ApplicationController
   end
 
   def document_params
-    params.require(:document).permit(:date, :author, :image, :note, :individual_id, :office).merge(company_id: @company_id, item_id: @item_id, user_id: current_user.id)
+    params.require(:document).permit(:date, :author, :image, :note, :individual_id, :department).merge(company_id: @company_id, item_id: @item_id, user_id: current_user.id)
   end
 
 end
