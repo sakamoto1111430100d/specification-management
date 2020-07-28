@@ -1,11 +1,5 @@
 class SearchesController < ApplicationController
   include SearchesHelper
-  # before_action :default_url_options
-
-  # def default_url_options
-  #   { individual_id: @current_individual.id }
-  # end
-  
 
   def index
     @companies = []
@@ -118,7 +112,6 @@ class SearchesController < ApplicationController
       format.json { render json: @individual }
     end
   end
-
 
   private
 

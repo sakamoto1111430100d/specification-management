@@ -32,7 +32,6 @@
           <div class="stocked_icon">
           <i class="fas fa-bookmark">&nbsp;済み</i>
           </div>
-
         <% else %>
           <div class="none_stock_icon">
           <i class="fas fa-bookmark">&nbsp;保存</i>
@@ -47,7 +46,6 @@
           <div class="document-content__note--area"><%= "#{document.note}" %></div>
           <div class="document-content__note--icon" data=<%= "#{document.id}" %>>
             <i class="fas fa-edit">&nbsp;編集</i>
-            
           </div>
         </td>
         <td class='delete_button'><%= link_to "", individual_document_path(id: document.id, company_id: @company.id, item_id: @item.id), method: :delete, class: "far fa-trash-alt", data: { confirm: '削除しますか？' } %></td>

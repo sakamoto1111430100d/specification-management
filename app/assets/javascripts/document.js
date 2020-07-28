@@ -78,7 +78,6 @@ $(function() {
         cancelFlag = 0;
       });
     }
-
   });
   $(document).on("click", ".stocked_icon", function() {
     if( cancelFlag == 0 ){

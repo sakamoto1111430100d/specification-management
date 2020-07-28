@@ -9,9 +9,7 @@ class ApplicationController < ActionController::Base
   skip_before_action :require_sign_in_individual!, if: :devise_controller?
 
   def sign_in_individual(individual)
-    # remember_token = Individual.new_remember_token
     cookies.permanent[:individual_id] = individual.id
-    # individual.update!(remember_token: Individual.encrypt(remember_token))
     @current_individual = individual
   end
 

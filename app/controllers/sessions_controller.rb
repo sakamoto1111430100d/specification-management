@@ -13,13 +13,6 @@ class SessionsController < ApplicationController
     else
       redirect_to action: :new
     end
-    # if @individual.authenticate(session_params[:password])
-    #   sign_in_individual(@individual)
-    #   redirect_to root_path
-    # else
-    #   flash.now[:danger] = t('.flash.invalid_password')
-    #   render 'new'
-    # end
   end
 
   def destroy
@@ -28,13 +21,6 @@ class SessionsController < ApplicationController
   end
 
   private
-
-  # def set_individual
-  #   @individual = Individual.find_by!(mail: session_params[:mail])
-  # rescue
-  #   flash.now[:danger] = t('.flash.invalid_mail')
-  #   render action: 'new'
-  # end
 
   def session_params
     params.require(:individual).permit(:email)
