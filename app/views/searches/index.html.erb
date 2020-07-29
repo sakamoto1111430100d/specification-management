@@ -13,14 +13,13 @@
     </div>
   </div>
   
-  <div class="header_icon__wrapper">
+
     <div class="header__add_icon">
       <%= link_to "　追加", new_individual_search_path, method: :get, class: 'fas fa-plus'%>
     </div>
     <div class="header__bars_icon" data=<%= "#{@individual.id}" %> >
       <i class="fas fa-bars"></i>
     </div>
-  </div>
 
 </header>
 <%= render "layouts/notifications" %>

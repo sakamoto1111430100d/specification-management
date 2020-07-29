@@ -7,28 +7,26 @@
     </div>
   </div>
   <div class="document_new_content">
-    <%= form_for @document, url: new_individual_document_path, html: { multipart: true } do |f| %>
+    <%= form_for @document, url: individual_documents_path, html: { multipart: true } do |f| %>
     <%= f.hidden_field :item_id, :value => params[:item_id] %>
     <%= f.hidden_field :company_id, :value => params[:company_id] %>
       <div class="document_new_content__document">
         <div class="document_new_content__company--wrapper">
           <div class="document_new_content__element">
           ＜締結日＞（例 20200101）<br>
-            <%= f.text_field :date, class: "document_new_form" %>
-          </div>
-          <div class="document_new_content__element">
-          ＜投稿者＞<br>
-            <%= f.text_field :author, class: "document_new_form" %>
+            <%= f.text_field :date, class: "document_new_form", required: true %>
           </div>
           <div class="document_new_content__element">
           ＜PDFファイル＞<br>
-            <%= f.file_field :image, class: "document_new_form" %>
+            <%= f.file_field :image, class: "document_new_form", required: true %>
           </div>
           <div class="document_new_content__element">
           ＜備考＞（任意）<br>
             <%= f.text_area :note, class: "document_new_form" %>
           </div>
-          
+            <%= f.hidden_field :individual_id, :value => @individual.id %>
+            <%= f.hidden_field :author, :value => @individual.name %>
+            <%= f.hidden_field :department, :value => @individual.department %>
         </div>
       </div>
       <div class="document_new_content__submit">

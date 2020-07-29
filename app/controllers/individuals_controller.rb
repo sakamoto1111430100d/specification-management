@@ -5,9 +5,9 @@ class IndividualsController < ApplicationController
     @params_id = params[:id]
     @individual = Individual.find(params[:individual_id])
     if params[:id] == "1"
-      @documents = Document.where(individual_id: params[:individual_id])
+      @documents = Document.where(individual_id: params[:individual_id]).order("documents.date DESC")
     else
-      @documents = Document.includes(:stocks).where(stocks: {individual_id: params[:individual_id]})
+      @documents = Document.includes(:stocks).where(stocks: {individual_id: params[:individual_id]}).order("documents.date DESC")
     end
     
   end

@@ -33,6 +33,7 @@ class DocumentsController < ApplicationController
 
   def new
     @document = Document.new
+    @individual = Individual.find(params[:individual_id])
   end
 
   def create
@@ -48,7 +49,7 @@ class DocumentsController < ApplicationController
   private
 
   def document_new_params
-    params.require(:document).permit(:date, :author, :image, :note, :item_id, :company_id).merge(user_id: current_user.id)
+    params.require(:document).permit(:date, :author, :image, :note, :individual_id, :department, :item_id, :company_id).merge(user_id: current_user.id)
   end
 
 end
