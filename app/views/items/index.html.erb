@@ -19,8 +19,8 @@
         <tr>
           <td><%= "#{document.date}" %></td>
           <td><%= link_to "", "#{document.image}", class: "far fa-file-alt" %></td>
-          <td><%= link_to "#{document.company.name}", individual_items_path(company_id: document.company.id) %></td>
-          <td><%= link_to "#{document.company.office}", individual_items_path(company_id: document.company.id) %></td>
+          <td><%= link_to "#{document.company.name}", individual_companies_path(company_id: document.company.id) %></td>
+          <td><%= link_to "#{document.company.office}", individual_companies_path(company_id: document.company.id) %></td>
           <td class='detail_css'><%= link_to "", individual_documents_path(item_id: document.item.id, company_id: document.company.id), class: "fas fa-angle-double-right" %></td>
         </tr>
         <% end %>

@@ -1,13 +1,12 @@
 $(function() {
-
   function appendCompany(keyword) {
-    var individual_id = location.pathname.replace("/searches", "")
+    var individual_id = location.search.replace("?individual_id=", "")
     if ( keyword.company_id ) {
       var html = 
       `
       <div class="company-list">
           <div class="company-list__element">
-          <a href="${individual_id}/companies?company_id=${keyword.company_id}">
+          <a href="/individuals/${individual_id}/companies?company_id=${keyword.company_id}">
           ${keyword.company_name}
           ${keyword.company_office}
           </div>
@@ -19,7 +18,7 @@ $(function() {
       `
       <div class="company-list">
           <div class="company-list__element">
-          <a href="${individual_id}/items?item_id=${keyword.item_id}">
+          <a href="/individuals/${individual_id}/items?item_id=${keyword.item_id}">
           ${keyword.item_code}
           ${keyword.item_name}
           </div>
@@ -103,9 +102,8 @@ $(function() {
   timer = null
   $("#keyword").on("keyup", function(e) {
     e.preventDefault();
-    var pathname = location.pathname
-    var path = pathname + '/search'
-    console.log(path)
+    var individual_id = $(this).parent().attr('individual_id');
+    var path = "/individuals/" + individual_id + "/searches/search"
 
     if ( timer !== null ) { clearTimeout(timer); };
     timer = setTimeout(function(){

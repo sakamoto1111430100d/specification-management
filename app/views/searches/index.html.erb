@@ -2,8 +2,6 @@
   <div header__bars_icon>
     <%= link_to "　ユーザー選択", sessions_path, method: :delete, class: "fas fa-users"%>
   </div>
-
-
   <div class="individual_area">
     <div class="individual_area__element">
       <%= @individual.department %>
@@ -12,15 +10,12 @@
       <%= @individual.name %>
     </div>
   </div>
-  
-
     <div class="header__add_icon">
       <%= link_to "　追加", new_individual_search_path, method: :get, class: 'fas fa-plus'%>
     </div>
     <div class="header__bars_icon" data=<%= "#{@individual.id}" %> >
       <i class="fas fa-bars"></i>
     </div>
-
 </header>
 <%= render "layouts/notifications" %>
 <main>
@@ -31,8 +26,7 @@
     </div>
   </div>
   <div class="search-form__wrapper">
-
-    <div class="search-form">
+    <div class="search-form" individual_id=<%= "#{@individual.id}" %> >
       <%= text_field_tag :keyword, "", placeholder: "会社名 or 製品名", class: "search-input" %>
     </div>
     <div class="individual_edit_form">
