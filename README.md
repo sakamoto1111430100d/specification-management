@@ -53,7 +53,7 @@
 ### URL
 http://54.199.113.217/
 ### テストアカウント
-email：test@test.comt<br>
+email：test@test.com<br>
 password：testtest
 
 ## 制作背景
@@ -67,7 +67,7 @@ password：testtest
 ### 使用技術（開発環境）
 Ruby on Rails<br>
 javascript(jquery)<br>
-AWS
+AWS(EC2,S3)
 ### 今後実装したい機能
 納入仕様書管理だけではなく、作成するシステムまで広げたいです。
 #### 1. 管理の面
